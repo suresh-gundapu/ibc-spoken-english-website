@@ -28,7 +28,7 @@ export default function Navbar() {
           <Image
             src="/ibc-logo.png"
             alt="IBC Spoken English Logo"
-            width={300} // లోగో వెడల్పు తగ్గించబడింది (300 నుండి 200కి)
+            width={250} // లోగో వెడల్పు తగ్గించబడింది (300 నుండి 200కి)
             height={80} // లోగో ఎత్తు ఆటోమేటిక్‌గా సర్దుబాటు చేయబడింది
             priority
             className="me-2"
