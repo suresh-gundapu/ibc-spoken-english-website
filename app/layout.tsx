@@ -1,10 +1,14 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 import BootstrapClient from '@/components/BootstrapClient';
 
-const inter = Inter({ subsets: ['latin'] });
-
+// 2. ఫాంట్‌ను కాన్ఫిగర్ చేయండి
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+});
 export const metadata: Metadata = {
   title: 'IBC Spoken English - Professional English Training',
   description: 'Master Spoken English with 25+ years of expert training. Business communication, interview prep, and corporate training by K. SRTV Prasad.',
@@ -30,7 +34,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={inter.className}>
+      <body className={poppins.className} >
         {children}
         <BootstrapClient />
         <script
