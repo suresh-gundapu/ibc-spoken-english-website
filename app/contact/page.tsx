@@ -68,7 +68,7 @@ export default function ContactPage() {
           <div className="text-center mb-5">
             <h1 className="section-heading">Get In Touch</h1>
             <p className="section-subheading">
-              Have questions? We'd love to hear from you. Reach out to us today!
+              Have questions? We would love to hear from you. Reach out to us today!
             </p>
           </div>
 
@@ -120,7 +120,7 @@ export default function ContactPage() {
                     role="alert"
                   >
                     <CheckCircle className="me-2" size={20} />
-                    Thank you! We'll get back to you soon.
+                    Thank you! We will get back to you soon.
                   </div>
                 )}
                 <form onSubmit={handleSubmit}>

@@ -3,7 +3,7 @@
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Link from 'next/link';
-import Image from 'next/image'; // Image కాంపోనెంట్ ఇంపోర్ట్ చేయబడింది
+import Image from 'next/image';
 import {
   Award,
   Users,
@@ -11,26 +11,58 @@ import {
   TrendingUp,
   MessageSquare,
   Briefcase,
+  Star, // <-- రివ్యూ స్టార్ల కోసం ఇది యాడ్ చేయబడింది
 } from 'lucide-react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react'; // <-- రివ్యూలను తెచ్చుకోవడానికి ఇవి యాడ్ చేయబడ్డాయి
+
+// రివ్యూ ఆబ్జెక్ట్ టైప్ (Reviews పేజీలో వాడినట్లే)
+interface Review {
+  name: string;
+  rating: number;
+  message: string;
+  createdAt: string;
+}
 
 export default function Home() {
+  // రివ్యూల కోసం కొత్త స్టేట్
+  const [latestReviews, setLatestReviews] = useState<Review[]>([]);
+  const [reviewsLoading, setReviewsLoading] = useState(true);
+
+  // పేజీ లోడ్ అయినప్పుడు లేటెస్ట్ రివ్యూలను తెస్తుంది
   useEffect(() => {
+    // Bootstrap కరౌసెల్ కోసం
     const carouselElement = document.getElementById('testimonialsCarousel');
     if (carouselElement) {
       const carousel = new (window as any).bootstrap.Carousel(carouselElement, {
-        interval: 4000,
+        interval: 5000, // 5 సెకన్లకు ఒకసారి మారుతుంది
         wrap: true,
       });
     }
+
+    // రివ్యూలను API నుండి తెస్తుంది
+    const fetchLatestReviews = async () => {
+      try {
+        setReviewsLoading(true);
+        // మనం రాసిన API ని వాడుతున్నాం (మొదటి 10 వస్తాయి)
+        const res = await fetch('/api/get-reviews?page=1');
+        const data = await res.json();
+        setLatestReviews(data.reviews);
+      } catch (error) {
+        console.error('Failed to fetch latest reviews', error);
+      } finally {
+        setReviewsLoading(false);
+      }
+    };
+
+    fetchLatestReviews();
   }, []);
 
   return (
     <>
       <Navbar />
 
+      {/* === Hero Section === */}
       <section className="hero-section">
-        {/* hero-overlay తీసివేయబడింది, ఎందుకంటే మనం దాన్ని CSS లోనే merge చేసాం */}
         <div className="hero-content">
           <div className="container h-100">
             <div className="row align-items-center h-100">
@@ -62,6 +94,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* === Stats Section === */}
       <section className="py-5">
         <div className="container">
           <div className="row g-4">
@@ -71,6 +104,7 @@ export default function Home() {
                 <p className="text-muted">Years Experience</p>
               </div>
             </div>
+            {/* ...ఇతర Stat Cards... */}
             <div className="col-md-3 col-sm-6">
               <div className="stat-card text-center p-4">
                 <h3 className="text-primary mb-2">5000+</h3>
@@ -93,20 +127,20 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ========== కొత్తగా జోడించిన 'About Us' సెక్షన్ ========== */}
-        <section className="py-5 bg-light">
-          <div className="container">
-            <div className="row align-items-center g-5">
-              <div className="col-lg-6">
-                <Image
-                  src="/about-home-image.jpg"
-                  alt="About IBC Spoken English"
-                  width={350} // ఇమేజ్ వెడల్పు 500 నుండి 450కి తగ్గించబడింది
-                  height={250} // ఇమేజ్ ఎత్తు 400 నుండి 350కి తగ్గించబడింది
-                  className="img-fluid rounded-3 shadow-lg hover-scale-effect" // కొత్త క్లాస్ 'hover-scale-effect' జోడించబడింది
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
+      {/* === About Us Snippet Section === */}
+      <section className="py-5 bg-light">
+        <div className="container">
+          <div className="row align-items-center g-5">
+            <div className="col-lg-6">
+              <Image
+                src="/about-home-image.jpg"
+                alt="About IBC Spoken English"
+                width={400}
+                height={300}
+                className="img-fluid rounded-3 shadow-lg"
+                style={{ objectFit: 'cover' }}
+              />
+            </div>
             <div className="col-lg-6">
               <h2 className="display-6 fw-bold mb-3">
                 Welcome to IBC Spoken English
@@ -114,14 +148,7 @@ export default function Home() {
               <p className="lead text-muted mb-4">
                 My name is Konakanchi SRTV Prasad, and I am a tutor
                 specializing in Spoken Hindi and English. With 25 years of
-                experience, I've worked with students, employees,
-                professionals, and homemakers to help them achieve fluency and
-                confidence.
-              </p>
-              <p className="text-muted">
-                Our goal is to enhance your communication, body language, and
-                confidence for personal and professional growth. We provide demo
-                classes and a satisfaction guarantee.
+                experience...
               </p>
               <Link
                 href="/about"
@@ -133,76 +160,85 @@ export default function Home() {
           </div>
         </div>
       </section>
-      {/* ========== కొత్త సెక్షన్ ముగిసింది ========== */}
 
+      {/* === 4. డైనమిక్ టెస్టోమోనియల్స్/రివ్యూస్ కరౌసెల్ === */}
       <section
         id="testimonialsCarousel"
-        className="carousel slide py-5" /* bg-light తీసివేయబడింది, ఎందుకంటే పై సెక్షన్‌కు ఉంది */
+        className="carousel slide py-5"
         data-bs-ride="carousel"
       >
-        <div className="carousel-inner">
-          <div className="carousel-item active">
-            <div className="container">
-              <div className="row justify-content-center">
-                <div className="col-lg-8">
-                  <div className="testimonial-card text-center p-5">
-                    <div className="mb-4">
-                      <span className="text-warning">★★★★★</span>
-                    </div>
-                    <p className="lead mb-4">
-                      "The training transformed my confidence and communication
-                      skills. I got my dream job thanks to the interview
-                      preparation!"
-                    </p>
-                    <p className="mb-0">
-                      <strong>- Priya Sharma, Student</strong>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {/* ... మిగిలిన carousel-items ... */}
-          <div className="carousel-item">
-            <div className="container">
-              <div className="row justify-content-center">
-                <div className="col-lg-8">
-                  <div className="testimonial-card text-center p-5">
-                    <div className="mb-4">
-                      <span className="text-warning">★★★★★</span>
-                    </div>
-                    <p className="lead mb-4">
-                      "Best investment for my English skills. The demo class
-                      itself was so informative!"
-                    </p>
-                    <p className="mb-0">
-                      <strong>- Aisha Mohamed, Learner</strong>
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="container text-center mb-4">
+          <h2 className="section-heading">Latest Student Reviews</h2>
         </div>
-        <button
-          className="carousel-control-prev"
-          type="button"
-          data-bs-target="#testimonialsCarousel"
-          data-bs-slide="prev"
-          aria-label="Previous slide"
-        >
-          <span className="carousel-control-prev-icon"></span>
-        </button>
-        <button
-          className="carousel-control-next"
-          type="button"
-          data-bs-target="#testimonialsCarousel"
-          data-bs-slide="next"
-          aria-label="Next slide"
-        >
-          <span className="carousel-control-next-icon"></span>
-        </button>
+        <div className="carousel-inner">
+          {reviewsLoading && (
+            <div className="carousel-item active">
+              <p className="text-center text-muted">Loading reviews...</p>
+            </div>
+          )}
+          {!reviewsLoading && latestReviews.length === 0 && (
+            <div className="carousel-item active">
+              <p className="text-center text-muted">No reviews available yet.</p>
+            </div>
+          )}
+          {!reviewsLoading &&
+            latestReviews.map((review, index) => (
+              <div
+                key={index}
+                // మొదటి ఐటమ్‌కు 'active' క్లాస్ యాడ్ చేస్తుంది
+                className={`carousel-item ${index === 0 ? 'active' : ''}`}
+              >
+                <div className="container">
+                  <div className="row justify-content-center">
+                    <div className="col-lg-8">
+                      <div className="testimonial-card text-center p-5">
+                        {/* డైనమిక్ స్టార్ రేటింగ్ */}
+                        <div className="mb-3 text-warning">
+                          {[...Array(review.rating)].map((_, i) => (
+                            <Star key={i} size={20} fill="#ffc107" stroke="#ffc107" />
+                          ))}
+                          {[...Array(5 - review.rating)].map((_, i) => (
+                            <Star key={i} size={20} stroke="#ffc107" />
+                          ))}
+                        </div>
+                        <p className="lead mb-4">"{review.message}"</p>
+                        <p className="mb-0">
+                          <strong>- {review.name}</strong>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+        </div>
+
+        {/* కంట్రోల్స్ (రివ్యూలు 1 కంటే ఎక్కువ ఉంటేనే కనిపిస్తాయి) */}
+        {latestReviews.length > 1 && (
+          <>
+            <button
+              className="carousel-control-prev"
+              type="button"
+              data-bs-target="#testimonialsCarousel"
+              data-bs-slide="prev"
+              aria-label="Previous slide"
+            >
+              <span className="carousel-control-prev-icon"></span>
+            </button>
+            <button
+              className="carousel-control-next"
+              type="button"
+              data-bs-target="#testimonialsCarousel"
+              data-bs-slide="next"
+              aria-label="Next slide"
+            >
+              <span className="carousel-control-next-icon"></span>
+            </button>
+          </>
+        )}
       </section>
+
+      {/* === 'View All Reviews' బటన్ === */}
       <section className="text-center pb-5">
         <div className="container">
           <Link href="/reviews" className="btn btn-outline-primary rounded-pill px-4">
@@ -210,15 +246,18 @@ export default function Home() {
           </Link>
         </div>
       </section>
-      {/* ... మిగిలిన Services, Why Choose Us, CTA సెక్షన్లు ... */}
-      
-      <section className="py-5">
+
+      {/* === Services Section === */}
+      <section className="py-5 bg-light">
         <div className="container">
-         <div className="text-center mb-5">
-          <h2 className="section-heading">Our Services</h2>
-          <p className="section-subheading">Comprehensive training programs designed for your success</p>
-        </div>
+          <div className="text-center mb-5">
+            <h2 className="section-heading">Our Services</h2>
+            <p className="section-subheading">
+              Comprehensive training programs designed for your success
+            </p>
+          </div>
           <div className="row g-4">
+            {/* ...Service Cards... */}
             <div className="col-lg-4 col-md-6">
               <div className="service-card">
                 <MessageSquare size={48} className="text-primary mb-3" />
@@ -244,13 +283,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-5 bg-light">
+      {/* === Why Choose Us Section === */}
+      <section className="py-5">
         <div className="container">
           <div className="text-center mb-5">
-          <h2 className="section-heading">Why Choose Us?</h2>
-          <p className="section-subheading">Excellence in every aspect of training</p>
-        </div>
+            <h2 className="section-heading">Why Choose Us?</h2>
+            <p className="section-subheading">
+              Excellence in every aspect of training
+            </p>
+          </div>
           <div className="row g-4">
+            {/* ...Why Cards... */}
             <div className="col-md-4">
               <div className="why-card">
                 <Award size={40} className="text-primary mb-3" />
@@ -276,6 +319,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* === CTA Section === */}
       <section className="py-5 cta-section">
         <div className="container">
           <div className="row">
