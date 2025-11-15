@@ -135,8 +135,8 @@ export default function Home() {
               <Image
                 src="/about-home-image.jpg"
                 alt="About IBC Spoken English"
-                width={400}
-                height={300}
+                width={300}
+                height={250}
                 className="img-fluid rounded-3 shadow-lg"
                 style={{ objectFit: 'cover' }}
               />
