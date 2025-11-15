@@ -69,7 +69,7 @@ export default function Footer() {
               </li>
               <li className="mb-2 d-flex align-items-center">
                 <Mail size={20} className="me-2" />
-                <a href="mailto:info@ibcspokenenglish.com">info@ibcspokenenglish.com</a>
+                <a href="ibcspokenenglish@gmail.com">ibcspokenenglish@gmail.com</a>
               </li>
             </ul>
           </div>

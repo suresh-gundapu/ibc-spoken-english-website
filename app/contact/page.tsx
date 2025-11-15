@@ -100,10 +100,10 @@ export default function ContactPage() {
                 <Mail className="text-primary mb-3" size={48} />
                 <h5>Email Address</h5>
                 <a
-                  href="mailto:info@ibcspokenenglish.com"
+                  href="mailto:ibcspokenenglish@gmail.com"
                   className="text-decoration-none text-muted"
                 >
-                  info@ibcspokenenglish.com
+                  ibcspokenenglish@gmail.com
                 </a>
               </div>
             </div>

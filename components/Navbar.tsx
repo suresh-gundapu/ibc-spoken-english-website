@@ -71,12 +71,12 @@ export default function Navbar() {
                 Services
               </Link>
             </li>
-            <li className="nav-item">
+          <li className="nav-item">
               <Link
-                className={`nav-link ${pathname === '/gallery' ? 'active' : ''}`}
-                href="/gallery"
+                className={`nav-link ${pathname === '/reviews' ? 'active' : ''}`}
+                href="/reviews"
               >
-                Gallery
+                Reviews
               </Link>
             </li>
             <li className="nav-item">

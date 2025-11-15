@@ -203,7 +203,13 @@ export default function Home() {
           <span className="carousel-control-next-icon"></span>
         </button>
       </section>
-
+      <section className="text-center pb-5">
+        <div className="container">
+          <Link href="/reviews" className="btn btn-outline-primary rounded-pill px-4">
+            View All Student Reviews
+          </Link>
+        </div>
+      </section>
       {/* ... మిగిలిన Services, Why Choose Us, CTA సెక్షన్లు ... */}
       
       <section className="py-5">
