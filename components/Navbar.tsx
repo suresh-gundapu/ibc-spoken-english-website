@@ -81,6 +81,14 @@ export default function Navbar() {
             </li>
             <li className="nav-item">
               <Link
+                className={`nav-link ${pathname === '/materials' ? 'active' : ''}`}
+                href="/materials"
+              >
+                Study Meterials
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
                 className={`nav-link ${pathname === '/contact' ? 'active' : ''}`}
                 href="/contact"
               >

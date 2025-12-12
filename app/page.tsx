@@ -12,6 +12,9 @@ import {
   MessageSquare,
   Briefcase,
   Star, // <-- రివ్యూ స్టార్ల కోసం ఇది యాడ్ చేయబడింది
+  FileText, // 👈 ఇది యాడ్ చేశాను
+  Package,  // 👈 ఇది కూడా యాడ్ చేశాను
+  BookOpen, // 👈 ఇది కూడా
 } from 'lucide-react';
 import { useEffect, useState } from 'react'; // <-- రివ్యూలను తెచ్చుకోవడానికి ఇవి యాడ్ చేయబడ్డాయి
 
@@ -246,7 +249,73 @@ export default function Home() {
           </Link>
         </div>
       </section>
+{/* === Featured Materials Section (New) === */}
+      <section className="py-5 bg-white">
+        <div className="container">
+          <div className="row align-items-center g-5">
+            <div className="col-lg-5">
+              <span className="text-primary fw-bold text-uppercase ls-1">Study Resources</span>
+              <h2 className="display-6 fw-bold mb-4">Download Our Premium Learning Materials</h2>
+              <p className="text-muted mb-4">
+                We have curated special PDF e-books and a complete IELTS success kit to help you practice at home. 
+                Get lifetime access to these resources starting at just ₹99.
+              </p>
+              
+              <div className="d-flex flex-column gap-3 mb-4">
+                <div className="d-flex align-items-center">
+                  <div className="bg-primary bg-opacity-10 p-2 rounded-circle me-3">
+                     <FileText className="text-primary" size={24} />
+                  </div>
+                  <div>
+                    <h6 className="mb-0 fw-bold">1000 Verb Forms PDF</h6>
+                    <small className="text-muted">Essential for sentence formation</small>
+                  </div>
+                </div>
+                <div className="d-flex align-items-center">
+                  <div className="bg-danger bg-opacity-10 p-2 rounded-circle me-3">
+                     <Package className="text-danger" size={24} />
+                  </div>
+                  <div>
+                    <h6 className="mb-0 fw-bold">7GB IELTS Speaking Kit</h6>
+                    <small className="text-muted">Videos, Audio & Practice Tests</small>
+                  </div>
+                </div>
+              </div>
 
+              <Link href="/materials" className="btn btn-primary rounded-pill px-4 shadow-sm">
+                View All Materials
+              </Link>
+            </div>
+
+            <div className="col-lg-7">
+              {/* ఒక చక్కటి విజువల్ గ్రిడ్ చూపిస్తున్నాం */}
+              <div className="row g-3">
+                <div className="col-6">
+                  <div className="p-4 rounded-4 bg-primary text-white h-100 d-flex flex-column justify-content-between shadow-sm">
+                    <BookOpen size={40} className="mb-4" />
+                    <div>
+                      <h5 className="fw-bold">Grammar Guide</h5>
+                      <span className="badge bg-white text-primary">₹149</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-6">
+                  <div className="p-4 rounded-4 bg-light h-100 d-flex flex-column justify-content-between border">
+                    <div className="d-flex justify-content-between">
+                       <Package size={40} className="text-danger mb-4" />
+                       <span className="badge bg-danger">Hot</span>
+                    </div>
+                    <div>
+                      <h5 className="fw-bold text-dark">IELTS Mega Kit</h5>
+                      <span className="badge bg-dark">₹499</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       {/* === Services Section === */}
       <section className="py-5 bg-light">
         <div className="container">
