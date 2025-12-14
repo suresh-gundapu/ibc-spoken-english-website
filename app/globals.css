@@ -207,3 +207,18 @@ footer a:hover {
   background-color: var(--primary-blue);
   transform: translateY(-3px);
 }
+
+/* app/globals.css చివరలో... */
+
+/* Footer Logo - Turn to Yellow */
+.footer-logo {
+  /* ఈ ఫిల్టర్ లోగో రంగును పసుపు (Yellow) రంగులోకి మారుస్తుంది */
+  filter: brightness(0) saturate(100%) invert(83%) sepia(94%) saturate(1352%) hue-rotate(359deg) brightness(105%) contrast(107%);
+  transition: all 0.3s ease;
+}
+
+.footer-logo:hover {
+  /* హోవర్ చేసినప్పుడు కొంచెం బ్రైట్‌గా అయ్యి, పెద్దది అవుతుంది */
+  filter: brightness(0) saturate(100%) invert(83%) sepia(94%) saturate(1352%) hue-rotate(359deg) brightness(115%) contrast(107%);
+  transform: scale(1.05);
+}

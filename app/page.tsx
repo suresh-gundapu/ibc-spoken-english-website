@@ -319,7 +319,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="col-6">
-                  <div className="p-4 rounded-4 bg-light h-100 d-flex flex-column justify-content-between border">
+                  <div className="p-4 rounded-4 bg-warning h-100 d-flex flex-column justify-content-between border">
                     <div className="d-flex justify-content-between">
                        <Package size={40} className="text-danger mb-4" />
                        <span className="badge bg-danger">Hot</span>

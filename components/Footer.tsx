@@ -18,7 +18,7 @@ export default function Footer() {
                 width={160}
                 height={50}
                 style={{ width: 'auto', height: '40px' }}
-                className="opacity-75 hover-opacity-100" // కొంచెం ఎఫెక్ట్
+                className="footer-logo" // కొంచెం ఎఫెక్ట్
               />
             </Link>         
             <p className="small">
@@ -42,6 +42,9 @@ export default function Footer() {
               <li className="mb-2"><Link href="/services">Services</Link></li>
               <li className="mb-2"><Link href="/reviews">Reviews</Link></li>
               <li className="mb-2"><Link href="/contact">Contact</Link></li>
+              <li className="mb-2"><Link href="/privacy">Privacy Policy</Link></li>
+              <li className="mb-2"><Link href="/terms">Terms & Conditions</Link></li>
+              <li className="mb-2"><Link href="/refund">Refund Policy</Link></li>
             </ul>
           </div>
 
@@ -54,6 +57,7 @@ export default function Footer() {
               <li className="mb-2">Interview Preparation</li>
               <li className="mb-2">Corporate Training</li>
               <li className="mb-2">Soft Skills</li>
+              
             </ul>
           </div>
 
