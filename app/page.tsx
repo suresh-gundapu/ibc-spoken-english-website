@@ -72,7 +72,7 @@ export default function Home() {
       <div className="row align-items-center h-100">
         <div className="col-lg-8 mx-auto text-center">
           <h1 className="hero-title">
-            Master Spoken English with Confidence
+            Gain Confidence in Mastering Spoken English
           </h1>
           <p className="hero-subtitle">
             Transform your communication skills with 25+ years of expert
@@ -96,7 +96,7 @@ export default function Home() {
               className="btn btn-warning btn-lg rounded-pill shadow-lg px-4 fw-bold d-flex align-items-center text-dark"
             >
               <Download size={20} className="me-2" />
-              Buy Study Materials
+              Easy Study Materials
             </Link>
 
             {/* 3. Services Button (Simple Outline) */}
@@ -129,7 +129,7 @@ export default function Home() {
             {/* ...ఇతర Stat Cards... */}
             <div className="col-md-3 col-sm-6">
               <div className="stat-card text-center p-4">
-                <h3 className="text-primary mb-2">5000+</h3>
+                <h3 className="text-primary mb-2">15000+</h3>
                 <p className="text-muted">Students Trained</p>
               </div>
             </div>
