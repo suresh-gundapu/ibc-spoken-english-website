@@ -15,6 +15,7 @@ import {
   FileText, // 👈 ఇది యాడ్ చేశాను
   Package,  // 👈 ఇది కూడా యాడ్ చేశాను
   BookOpen, // 👈 ఇది కూడా
+  Download, // 👈 ఇది కొత్తగా యాడ్ చెయ్యి
 } from 'lucide-react';
 import { useEffect, useState } from 'react'; // <-- రివ్యూలను తెచ్చుకోవడానికి ఇవి యాడ్ చేయబడ్డాయి
 
@@ -64,38 +65,56 @@ export default function Home() {
     <>
       <Navbar />
 
-      {/* === Hero Section === */}
-      <section className="hero-section">
-        <div className="hero-content">
-          <div className="container h-100">
-            <div className="row align-items-center h-100">
-              <div className="col-lg-8 mx-auto text-center">
-                <h1 className="hero-title">
-                  Master Spoken English with Confidence
-                </h1>
-                <p className="hero-subtitle">
-                  Transform your communication skills with 25+ years of expert
-                  guidance
-                </p>
-                <div className="d-flex gap-3 justify-content-center mt-5 flex-wrap">
-                  <Link
-                    href="/contact"
-                    className="btn btn-primary btn-lg rounded-pill shadow"
-                  >
-                    Book Demo Class
-                  </Link>
-                  <Link
-                    href="/services"
-                    className="btn btn-outline-primary btn-lg rounded-pill"
-                  >
-                    Explore Services
-                  </Link>
-                </div>
-              </div>
-            </div>
+   {/* === Hero Section === */}
+<section className="hero-section">
+  <div className="hero-content">
+    <div className="container h-100">
+      <div className="row align-items-center h-100">
+        <div className="col-lg-8 mx-auto text-center">
+          <h1 className="hero-title">
+            Master Spoken English with Confidence
+          </h1>
+          <p className="hero-subtitle">
+            Transform your communication skills with 25+ years of expert
+            guidance. Download premium study materials instantly.
+          </p>
+          
+          {/* === BUTTONS SECTION === */}
+          <div className="d-flex gap-3 justify-content-center mt-5 flex-wrap">
+            {/* 1. Demo Class Button (Main) */}
+            <Link
+              href="/contact"
+              className="btn btn-primary btn-lg rounded-pill shadow-lg px-4"
+            >
+              Book Demo Class
+            </Link>
+
+            {/* 2. Study Materials Button (HIGHLIGHTED 🔥) */}
+            {/* దీనికి btn-warning (Yellow) ఇచ్చాం, ఐకాన్ కూడా పెట్టాం */}
+            <Link
+              href="/materials"
+              className="btn btn-warning btn-lg rounded-pill shadow-lg px-4 fw-bold d-flex align-items-center text-dark"
+            >
+              <Download size={20} className="me-2" />
+              Buy Study Materials
+            </Link>
+
+            {/* 3. Services Button (Simple Outline) */}
+            {/* ఇది వైట్ కలర్ అవుట్‌లైన్ అయితే డార్క్ బ్యాక్‌గ్రౌండ్‌పై బాగుంటుంది */}
+            <Link
+              href="/services"
+              className="btn btn-outline-light btn-lg rounded-pill px-4"
+            >
+              Explore Services
+            </Link>
           </div>
+          {/* ======================= */}
+
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
 
       {/* === Stats Section === */}
       <section className="py-5">
