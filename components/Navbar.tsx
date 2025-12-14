@@ -11,7 +11,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20); // 50 నుండి 20 కి మార్చాం, రెస్పాన్స్ ఫాస్ట్ గా ఉండటానికి
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -19,23 +19,27 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`navbar navbar-expand-lg navbar-light fixed-top navbar-transition ${
+      className={`navbar navbar-expand-lg fixed-top navbar-transition ${
         isScrolled ? 'navbar-scrolled' : ''
       }`}
     >
       <div className="container">
         <Link className="navbar-brand d-flex align-items-center" href="/">
-          <Image
-            src="/ibc-logo.png"
-            alt="IBC Spoken English Logo"
-            width={250} // లోగో వెడల్పు తగ్గించబడింది (300 నుండి 200కి)
-            height={70} // లోగో ఎత్తు ఆటోమేటిక్‌గా సర్దుబాటు చేయబడింది
-            priority
-            className="me-2"
-          />
+          {/* Logo size responsive ga handle cheyadaniki style vadam */}
+          <div style={{ maxWidth: '180px', height: 'auto' }}>
+            <Image
+              src="/ibc-logo.png"
+              alt="IBC Spoken English Logo"
+              width={200}
+              height={60}
+              priority
+              style={{ width: '100%', height: 'auto' }} // Responsive Image
+            />
+          </div>
         </Link>
+        
         <button
-          className="navbar-toggler"
+          className="navbar-toggler border-0 shadow-none"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
@@ -45,61 +49,31 @@ export default function Navbar() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
         <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${pathname === '/' ? 'active' : ''}`}
-                href="/"
-              >
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${pathname === '/about' ? 'active' : ''}`}
-                href="/about"
-              >
-                About Us
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${pathname === '/services' ? 'active' : ''}`}
-                href="/services"
-              >
-                Services
-              </Link>
-            </li>
-          <li className="nav-item">
-              <Link
-                className={`nav-link ${pathname === '/reviews' ? 'active' : ''}`}
-                href="/reviews"
-              >
-                Reviews
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${pathname === '/materials' ? 'active' : ''}`}
-                href="/materials"
-              >
-                Study Meterials
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link
-                className={`nav-link ${pathname === '/contact' ? 'active' : ''}`}
-                href="/contact"
-              >
-                Contact
-              </Link>
-            </li>
+          <ul className="navbar-nav ms-auto align-items-center">
+            {[
+              { name: 'Home', path: '/' },
+              { name: 'About Us', path: '/about' },
+              { name: 'Services', path: '/services' },
+              { name: 'Reviews', path: '/reviews' },
+              { name: 'Materials', path: '/materials' },
+              { name: 'Contact', path: '/contact' },
+            ].map((item) => (
+              <li className="nav-item" key={item.path}>
+                <Link
+                  className={`nav-link ${pathname === item.path ? 'active' : ''}`}
+                  href={item.path}
+                >
+                  {item.name}
+                </Link>
+              </li>
+            ))}
           </ul>
-          {/* బటన్‌కు 'rounded-pill' మరియు 'shadow-sm' క్లాసులు జోడించబడ్డాయి */}
+          
           <Link
             href="/contact"
-            className="btn btn-primary ms-lg-3 rounded-pill shadow-sm"
+            className="btn btn-primary ms-lg-3 rounded-pill shadow-sm fw-bold px-4"
           >
             Book Demo Class
           </Link>

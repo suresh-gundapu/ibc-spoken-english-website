@@ -1,53 +1,53 @@
 import Link from 'next/link';
 import { Facebook, Twitter, Linkedin, Instagram, MapPin, Phone, Mail } from 'lucide-react';
 import Image from 'next/image';
+
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer>
       <div className="container">
-        <div className="row">
-          <div className="col-lg-4 col-md-6 mb-4">
-        <Link className="navbar-brand d-flex align-items-center" href="/">
-          <Image
-            src="/ibc-logo.png"
-            alt="IBC Spoken English Logo"
-            width={300}
-            height={70}
-            priority
-            className="me-2"
-          />
-        </Link>         
-        <p className="text-light">
+        <div className="row g-4"> {/* g-4 adds gap between columns */}
+          {/* Column 1: Logo & Intro */}
+          <div className="col-lg-4 col-md-6">
+            <Link className="d-block mb-3" href="/">
+              <Image
+                src="/ibc-logo.png" // గమనిక: డార్క్ బ్యాక్‌గ్రౌండ్ కాబట్టి వైట్ లోగో ఉంటే బెటర్, లేకపోతే ఇది వాడు
+                alt="IBC Spoken English"
+                width={160}
+                height={50}
+                style={{ width: 'auto', height: '40px' }}
+                className="opacity-75 hover-opacity-100" // కొంచెం ఎఫెక్ట్
+              />
+            </Link>         
+            <p className="small">
               Professional English training with 25+ years of experience in Spoken English,
               Business Communication, and Corporate Training.
             </p>
-            <div className="social-icons mt-3">
-              <a href="#" aria-label="Facebook">
-                <Facebook size={20} />
-              </a>
-              <a href="#" aria-label="Twitter">
-                <Twitter size={20} />
-              </a>
-              <a href="#" aria-label="LinkedIn">
-                <Linkedin size={20} />
-              </a>
-              <a href="#" aria-label="Instagram">
-                <Instagram size={20} />
-              </a>
+            <div className="social-icons mt-4">
+              <a href="#"><Facebook size={18} /></a>
+              <a href="#"><Twitter size={18} /></a>
+              <a href="#"><Linkedin size={18} /></a>
+              <a href="#"><Instagram size={18} /></a>
             </div>
           </div>
-          <div className="col-lg-2 col-md-6 mb-4">
-            <h5 className="mb-3">Quick Links</h5>
+
+          {/* Column 2: Quick Links */}
+          <div className="col-lg-2 col-md-6">
+            <h5>Quick Links</h5>
             <ul className="list-unstyled">
               <li className="mb-2"><Link href="/">Home</Link></li>
               <li className="mb-2"><Link href="/about">About Us</Link></li>
               <li className="mb-2"><Link href="/services">Services</Link></li>
-              <li className="mb-2"><Link href="/gallery">Gallery</Link></li>
+              <li className="mb-2"><Link href="/reviews">Reviews</Link></li>
               <li className="mb-2"><Link href="/contact">Contact</Link></li>
             </ul>
           </div>
-          <div className="col-lg-3 col-md-6 mb-4">
-            <h5 className="mb-3">Services</h5>
+
+          {/* Column 3: Programs */}
+          <div className="col-lg-3 col-md-6">
+            <h5>Our Programs</h5>
             <ul className="list-unstyled">
               <li className="mb-2">Spoken English</li>
               <li className="mb-2">Business Communication</li>
@@ -56,34 +56,37 @@ export default function Footer() {
               <li className="mb-2">Soft Skills</li>
             </ul>
           </div>
-          <div className="col-lg-3 col-md-6 mb-4">
-            <h5 className="mb-3">Contact Info</h5>
+
+          {/* Column 4: Contact */}
+          <div className="col-lg-3 col-md-6">
+            <h5>Get in Touch</h5>
             <ul className="list-unstyled">
-              <li className="mb-2 d-flex align-items-start">
-                <MapPin size={20} className="me-2 mt-1 flex-shrink-0" />
-                <span>Opposite Sree Bakery, Temple Alwal, Secunderabad 500010</span>
+              <li className="mb-3 d-flex">
+                <MapPin size={18} className="me-2 mt-1 text-primary flex-shrink-0" />
+                <span>Opp. Sree Bakery, Temple Alwal, Secunderabad 500010</span>
               </li>
-              <li className="mb-2 d-flex align-items-center">
-                <Phone size={20} className="me-2" />
+              <li className="mb-3 d-flex align-items-center">
+                <Phone size={18} className="me-2 text-primary" />
                 <a href="tel:8121659619">8121659619</a>
               </li>
-              <li className="mb-2 d-flex align-items-center">
-                <Mail size={20} className="me-2" />
-                <a href="ibcspokenenglish@gmail.com">ibcspokenenglish@gmail.com</a>
+              <li className="mb-3 d-flex align-items-center">
+                <Mail size={18} className="me-2 text-primary" />
+                <a href="mailto:ibcspokenenglish@gmail.com">ibcspokenenglish@gmail.com</a>
               </li>
             </ul>
           </div>
         </div>
-        <hr className="my-4 bg-light opacity-25" />
-        <div className="row">
-          <div className="col-md-6 text-center text-md-start mb-3 mb-md-0">
-            <p className="mb-0">
-              &copy; {new Date().getFullYear()} IBC Spoken English. All rights reserved.
+
+        <hr className="my-4 border-secondary opacity-25" />
+
+        <div className="row align-items-center">
+          <div className="col-md-6 text-center text-md-start">
+            <p className="mb-0 small">
+              &copy; {currentYear} IBC Spoken English. All rights reserved.
             </p>
           </div>
-          <div className="col-md-6 text-center text-md-end">
-            <p className="mb-0">
-            </p>
+          <div className="col-md-6 text-center text-md-end mt-2 mt-md-0">
+             <span className="small text-muted">Designed for Excellence</span>
           </div>
         </div>
       </div>
