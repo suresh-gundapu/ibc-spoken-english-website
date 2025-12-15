@@ -123,6 +123,24 @@ const products = [
     isPopular: true,
     colorClass: "btn-danger"
   },
+  // ... పాత ప్రోడక్ట్స్ తరువాత కామా (,) పెట్టి ఇది యాడ్ చెయ్యి
+  {
+    id: 999, // స్పెషల్ ID
+    title: "Test Payment (₹1)",
+    description: "This is only for testing live payments. Do not buy.",
+    price: "₹1",
+    rawPrice: 1, // కేవలం 1 రూపాయి
+    type: "TEST",
+    // Simple Grey Cover for Test
+    coverImage: (
+      <div style={{width: '100%', height: '100%', background: '#ccc', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#000', fontWeight: 'bold'}}>
+        TEST ITEM ₹1
+      </div>
+    ),
+    features: ["Testing UPI", "Testing Cards", "No Refund"],
+    isPopular: false,
+    colorClass: "btn-secondary"
+  }
 ];
 
 export default function MaterialsPage() {
