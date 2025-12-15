@@ -5,11 +5,17 @@ import { kv } from '@vercel/kv';
 export const dynamic = 'force-dynamic';
 
 // 👇 ఇక్కడ నీ గూగుల్ డ్రైవ్ లింక్స్ మార్చు (ID ప్రకారం)
+
 const FILE_LINKS: Record<string, string> = {
-  "1": "https://drive.google.com/file/d/1EDkYQgOfj1jU7o73P1OsU_y-Lp9ihLf6/view?usp=drive_link", // ID 1: Verb Forms
-  "2": "https://drive.google.com/file/d/12S8NLSYiUTOx6RXZa1g2f_R7DVxoX6NG/view?usp=drive_link", // ID 2: Grammar
-  "3": "https://drive.google.com/file/d/19UBC6swSWfqSqKsdZZKcXI-TJWA_2n0f/view?usp=drive_link", // ID 3: Vocabulary
-  "4": "", // ID 4: IELTS Kit
+  "1": "https://drive.google.com/file/d/1EDkYQgOfj1jU7o73P1OsU_y-Lp9ihLf6/view?usp=drive_link", // 1. 1000 Verb Forms
+  "2": "https://drive.google.com/file/d/19UBC6swSWfqSqKsdZZKcXI-TJWA_2n0f/view?usp=drive_link", // 2. Essential Vocabulary
+  "3": "https://drive.google.com/file/d/13FPCP5ipTMhj8qVLcCbhVNFcmnMWLWbj/view?usp=drive_link", // 3. Intermediate Grammar
+  "4": "https://drive.google.com/file/d/12S8NLSYiUTOx6RXZa1g2f_R7DVxoX6NG/view?usp=drive_link", // 4. Advanced Grammar
+  "5": "https://drive.google.com/file/d/1HYO0R4akM9GG-nvt3Fy_BvDHgE8uMtTI/view?usp=drive_link", // 5. IELTS Kit (ZIP)
+  "6": "https://drive.google.com/file/d/1GxoR9Iq6gK_-Ea7u-ZVsfqw9DrIkBklP/view?usp=drive_link", // 6. Tell Me About Yourself
+  "7": "https://drive.google.com/file/d/1T9S28Wr6Dvl3Q4TDKdRZt2PLoYyBRVZ2/view?usp=drive_link", // 7. 64 Tough Questions
+  "8": "https://drive.google.com/file/d/1QlZEh_aQAOV_XIZKxSVvjWHRKg7z-BXD/view?usp=drive_link", // 8. Body Language
+  "9": "https://drive.google.com/file/d/1XY-jM8Kr53hWoztwS3dSRuCk7_D_ixgZ/view?usp=drive_link", // 9. Personality Development (Rs 49)
 };
 
 export async function POST(req: Request) {

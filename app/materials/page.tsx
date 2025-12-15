@@ -4,12 +4,12 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Script from 'next/script';
 import { useState } from 'react';
-import { Download, Check, Award, Star, Zap, BookOpen, Users } from 'lucide-react';
+import { Download, Check, Award } from 'lucide-react';
 import Swal from 'sweetalert2';
 
-// ========== PRODUCT DATA (Total 9 Books) ==========
+// ========== PRODUCT DATA (ORDERED 1-9) ==========
 const products = [
-  // --- OLD BOOKS (1 to 4) ---
+  // 1. 1000 Verbs
   {
     id: 1,
     title: "1000 Verb Forms & Sentences",
@@ -17,7 +17,6 @@ const products = [
     price: "₹99",
     rawPrice: 99,
     type: "PDF E-Book",
-    // BLUE COVER
     coverImage: (
       <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -27,177 +26,66 @@ const products = [
           </linearGradient>
         </defs>
         <rect width="300" height="320" fill="url(#grad1)" />
-        <rect x="20" y="20" width="260" height="280" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="2" />
-        <text x="150" y="60" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold" letterSpacing="2">IBC ENGLISH</text>
+        <rect x="20" y="40" width="260" height="240" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="2" />
+        
+        {/* Institute Name */}
+        <text x="150" y="30" fill="#4facfe" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
+        
         <text x="150" y="140" fill="white" textAnchor="middle" fontSize="60" fontWeight="900">1000</text>
         <text x="150" y="180" fill="#4facfe" textAnchor="middle" fontSize="28" fontWeight="bold">VERB FORMS</text>
         <text x="150" y="210" fill="white" textAnchor="middle" fontSize="16">& Sentences</text>
-        <rect x="80" y="260" width="140" height="30" fill="white" rx="15" />
-        <text x="150" y="280" fill="#004e92" textAnchor="middle" fontSize="12" fontWeight="bold">WITH TELUGU</text>
+        
+        {/* Author Name */}
+        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     features: ["Telugu Meanings", "V1 V2 V3 Forms", "Daily Usage Examples"],
     isPopular: false,
     colorClass: "btn-primary"
   },
+
+  // 2. Essential Vocabulary
   {
     id: 2,
-    title: "Advanced Grammar in Use",
-    description: "Master complex grammar rules. A self-study reference and practice book for advanced learners.",
-    price: "₹149",
-    rawPrice: 149,
-    type: "PDF E-Book",
-    // GREEN COVER
-    coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style={{ stopColor: '#11998e', stopOpacity: 1 }} />
-            <stop offset="100%" style={{ stopColor: '#38ef7d', stopOpacity: 1 }} />
-          </linearGradient>
-        </defs>
-        <rect width="300" height="320" fill="url(#grad2)" />
-        <text x="20" y="40" fill="white" fontSize="12" fontWeight="bold">ADVANCED SERIES</text>
-        <text x="20" y="120" fill="white" fontSize="38" fontWeight="900">English</text>
-        <text x="20" y="160" fill="#1a2a6c" fontSize="38" fontWeight="900">Grammar</text>
-        <text x="20" y="200" fill="white" fontSize="38" fontWeight="900">in Use</text>
-        <line x1="20" y1="230" x2="150" y2="230" stroke="white" strokeWidth="4" />
-      </svg>
-    ),
-    features: ["Advanced Concepts", "Practice Exercises", "Self-study Guide"],
-    isPopular: false,
-    colorClass: "btn-success"
-  },
-  {
-    id: 3,
     title: "Easy Essential Vocabulary",
     description: "Boost your word power with this carefully curated list of 3000+ essential English words.",
     price: "₹129",
     rawPrice: 129,
     type: "PDF E-Book",
-    // ORANGE COVER
     coverImage: (
       <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+          <linearGradient id="gradVocab" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" style={{ stopColor: '#f12711', stopOpacity: 1 }} />
             <stop offset="100%" style={{ stopColor: '#f5af19', stopOpacity: 1 }} />
           </linearGradient>
         </defs>
-        <rect width="300" height="320" fill="url(#grad3)" />
+        <rect width="300" height="320" fill="url(#gradVocab)" />
+        
+        {/* Institute Name */}
+        <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
+
         <circle cx="150" cy="120" r="50" fill="white" opacity="0.2" />
         <text x="150" y="160" fill="white" textAnchor="middle" fontSize="36" fontWeight="900">VOCAB</text>
         <text x="150" y="200" fill="#333" textAnchor="middle" fontSize="24" fontWeight="bold">BOOSTER</text>
-        <text x="150" y="280" fill="white" textAnchor="middle" fontSize="14">3000+ Words</text>
+        
+        {/* Author Name */}
+        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     features: ["Daily Vocabulary", "Synonyms & Antonyms", "Easy to Remember"],
     isPopular: false,
     colorClass: "btn-warning text-dark"
   },
-  {
-    id: 4,
-    title: "IELTS Success 100% Kit",
-    description: "Complete IELTS preparation kit. Includes 7GB of Audio, Video, and comprehensive Speaking Modules.",
-    price: "₹499",
-    rawPrice: 499,
-    type: "ZIP Bundle (7GB)",
-    // PREMIUM RED COVER
-    coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style={{ stopColor: '#8E0E00', stopOpacity: 1 }} />
-            <stop offset="100%" style={{ stopColor: '#1F1C18', stopOpacity: 1 }} />
-          </linearGradient>
-        </defs>
-        <rect width="300" height="320" fill="url(#grad4)" />
-        <rect x="0" y="30" width="300" height="40" fill="#FFD700" />
-        <text x="150" y="55" fill="black" textAnchor="middle" fontSize="18" fontWeight="bold">★ PREMIUM KIT ★</text>
-        <text x="150" y="150" fill="white" textAnchor="middle" fontSize="48" fontWeight="900">IELTS</text>
-        <text x="150" y="190" fill="white" textAnchor="middle" fontSize="24" fontWeight="bold">SUCCESS FORMULA</text>
-        <rect x="100" y="240" width="100" height="30" fill="white" rx="15" />
-        <text x="150" y="260" fill="#8E0E00" textAnchor="middle" fontSize="14" fontWeight="bold">7GB DATA</text>
-      </svg>
-    ),
-    features: ["7GB Content", "Audio & Video", "Band 9.0 Tips"],
-    isPopular: true,
-    colorClass: "btn-danger"
-  },
 
-  // --- NEW BOOKS (5 to 9) ---
+  // 3. Intermediate Grammar
   {
-    id: 5,
-    title: "64 Toughest Interview Qs",
-    description: "Expert answers to the 64 most difficult interview questions. Prepared by HR professionals.",
-    price: "₹129",
-    rawPrice: 129,
-    type: "PDF Guide",
-    // DARK THEME COVER
-    coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
-        <rect width="300" height="320" fill="#2d3436" />
-        <rect x="20" y="20" width="260" height="280" fill="none" stroke="#00cec9" strokeWidth="2" />
-        <text x="150" y="100" fill="#00cec9" textAnchor="middle" fontSize="80" fontWeight="900">64</text>
-        <text x="150" y="150" fill="white" textAnchor="middle" fontSize="22" fontWeight="bold">TOUGHEST</text>
-        <text x="150" y="180" fill="white" textAnchor="middle" fontSize="22" fontWeight="bold">QUESTIONS</text>
-        <text x="150" y="250" fill="#dfe6e9" textAnchor="middle" fontSize="14">Interview Guide</text>
-      </svg>
-    ),
-    features: ["HR Secrets", "Winning Answers", "Crack Any Interview"],
-    isPopular: true,
-    colorClass: "btn-dark"
-  },
-  {
-    id: 6,
-    title: "Tell Me About Yourself",
-    description: "The ultimate guide to answering the #1 interview question with confidence. Includes script templates.",
-    price: "₹99",
-    rawPrice: 99,
-    type: "PDF E-Book",
-    // MINIMALIST GRAY COVER
-    coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
-        <rect width="300" height="320" fill="#636e72" />
-        <path d="M100 100 L200 100 L150 180 Z" fill="#fab1a0" />
-        <text x="150" y="80" fill="white" textAnchor="middle" fontSize="20" fontWeight="bold">THE GUIDE TO</text>
-        <text x="150" y="230" fill="white" textAnchor="middle" fontSize="28" fontWeight="bold">TELL ME</text>
-        <text x="150" y="265" fill="#fab1a0" textAnchor="middle" fontSize="24" fontWeight="bold">ABOUT YOURSELF</text>
-      </svg>
-    ),
-    features: ["Script Templates", "Mistakes to Avoid", "First Impressions"],
-    isPopular: false,
-    colorClass: "btn-secondary"
-  },
-  {
-    id: 7,
-    title: "Vyaktitva Vikasam",
-    description: "Personality Development by Swami Vivekananda (Telugu). Build character, confidence, and leadership.",
-    price: "₹99",
-    rawPrice: 99,
-    type: "Telugu Book",
-    // VINTAGE PAPER COVER
-    coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
-        <rect width="300" height="320" fill="#fff5d7" />
-        <rect x="15" y="15" width="270" height="290" fill="none" stroke="#8b4513" strokeWidth="3" />
-        <text x="150" y="120" fill="#8b4513" textAnchor="middle" fontSize="34" fontFamily="serif" fontWeight="900">వ్యక్తిత్వ</text>
-        <text x="150" y="170" fill="#8b4513" textAnchor="middle" fontSize="34" fontFamily="serif" fontWeight="900">వికాసం</text>
-        <text x="150" y="250" fill="#555" textAnchor="middle" fontSize="16" fontFamily="serif">స్వామి వివేకానంద</text>
-      </svg>
-    ),
-    features: ["Pure Telugu", "Self Confidence", "Life Lessons"],
-    isPopular: false,
-    colorClass: "btn-warning text-dark"
-  },
-  {
-    id: 8,
+    id: 3,
     title: "Intermediate Grammar",
     description: "English Grammar in Use (Intermediate). Perfect for bridging the gap between basic and advanced English.",
     price: "₹149",
     rawPrice: 149,
     type: "PDF E-Book",
-    // CYAN/BLUE COVER
     coverImage: (
       <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
         <linearGradient id="gradInter" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -206,24 +94,158 @@ const products = [
         </linearGradient>
         <rect width="300" height="320" fill="url(#gradInter)" />
         <rect x="50" y="0" width="200" height="320" fill="rgba(255,255,255,0.1)" />
+        
+        {/* Institute Name */}
+        <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
+
         <text x="150" y="100" fill="white" textAnchor="middle" fontSize="24" fontWeight="bold">ENGLISH</text>
         <text x="150" y="140" fill="white" textAnchor="middle" fontSize="32" fontWeight="900">GRAMMAR</text>
         <text x="150" y="180" fill="#ffd700" textAnchor="middle" fontSize="24" fontWeight="bold">INTERMEDIATE</text>
-        <text x="150" y="280" fill="white" textAnchor="middle" fontSize="14">Self-Study Reference</text>
+        
+        {/* Author Name */}
+        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     features: ["Intermediate Level", "Clear Explanations", "Exercises"],
     isPopular: false,
     colorClass: "btn-info text-white"
   },
+
+  // 4. Advanced Grammar
   {
-    id: 9,
+    id: 4,
+    title: "Advanced Grammar in Use",
+    description: "Master complex grammar rules. A self-study reference and practice book for advanced learners.",
+    price: "₹149",
+    rawPrice: 149,
+    type: "PDF E-Book",
+    coverImage: (
+      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gradAdv" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style={{ stopColor: '#11998e', stopOpacity: 1 }} />
+            <stop offset="100%" style={{ stopColor: '#38ef7d', stopOpacity: 1 }} />
+          </linearGradient>
+        </defs>
+        <rect width="300" height="320" fill="url(#gradAdv)" />
+        
+        {/* Institute Name */}
+        <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
+
+        <text x="150" y="120" fill="white" textAnchor="middle" fontSize="38" fontWeight="900">English</text>
+        <text x="150" y="160" fill="#1a2a6c" fontSize="38" fontWeight="900">Grammar</text>
+        <text x="150" y="200" fill="white" fontSize="38" fontWeight="900">in Use</text>
+        
+        {/* Author Name */}
+        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+      </svg>
+    ),
+    features: ["Advanced Concepts", "Practice Exercises", "Self-study Guide"],
+    isPopular: false,
+    colorClass: "btn-success"
+  },
+
+  // 5. IELTS Kit
+  {
+    id: 5,
+    title: "IELTS Success 100% Kit",
+    description: "Complete IELTS preparation kit. Includes 7GB of Audio, Video, and comprehensive Speaking Modules.",
+    price: "₹499",
+    rawPrice: 499,
+    type: "ZIP Bundle (7GB)",
+    coverImage: (
+      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gradIelts" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style={{ stopColor: '#8E0E00', stopOpacity: 1 }} />
+            <stop offset="100%" style={{ stopColor: '#1F1C18', stopOpacity: 1 }} />
+          </linearGradient>
+        </defs>
+        <rect width="300" height="320" fill="url(#gradIelts)" />
+        
+        {/* Institute Name */}
+        <text x="150" y="30" fill="#FFD700" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
+
+        <rect x="0" y="50" width="300" height="40" fill="#FFD700" />
+        <text x="150" y="75" fill="black" textAnchor="middle" fontSize="18" fontWeight="bold">★ PREMIUM KIT ★</text>
+        <text x="150" y="150" fill="white" textAnchor="middle" fontSize="48" fontWeight="900">IELTS</text>
+        <text x="150" y="190" fill="white" textAnchor="middle" fontSize="24" fontWeight="bold">SUCCESS FORMULA</text>
+        
+        {/* Author Name */}
+        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+      </svg>
+    ),
+    features: ["7GB Content", "Audio & Video", "Band 9.0 Tips"],
+    isPopular: true,
+    colorClass: "btn-danger"
+  },
+
+  // 6. Tell Me About Yourself
+  {
+    id: 6,
+    title: "Tell Me About Yourself",
+    description: "The ultimate guide to answering the #1 interview question with confidence. Includes script templates.",
+    price: "₹99",
+    rawPrice: 99,
+    type: "PDF E-Book",
+    coverImage: (
+      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="320" fill="#636e72" />
+        
+        {/* Institute Name */}
+        <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
+
+        <path d="M100 100 L200 100 L150 180 Z" fill="#fab1a0" />
+        <text x="150" y="80" fill="white" textAnchor="middle" fontSize="20" fontWeight="bold">THE GUIDE TO</text>
+        <text x="150" y="230" fill="white" textAnchor="middle" fontSize="28" fontWeight="bold">TELL ME</text>
+        <text x="150" y="265" fill="#fab1a0" textAnchor="middle" fontSize="24" fontWeight="bold">ABOUT YOURSELF</text>
+        
+        {/* Author Name */}
+        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+      </svg>
+    ),
+    features: ["Script Templates", "Mistakes to Avoid", "First Impressions"],
+    isPopular: false,
+    colorClass: "btn-secondary"
+  },
+
+  // 7. 64 Tough Questions
+  {
+    id: 7,
+    title: "64 Toughest Interview Qs",
+    description: "Expert answers to the 64 most difficult interview questions. Prepared by HR professionals.",
+    price: "₹129",
+    rawPrice: 129,
+    type: "PDF Guide",
+    coverImage: (
+      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="320" fill="#2d3436" />
+        <rect x="20" y="40" width="260" height="240" fill="none" stroke="#00cec9" strokeWidth="2" />
+        
+        {/* Institute Name */}
+        <text x="150" y="30" fill="#00cec9" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
+
+        <text x="150" y="100" fill="#00cec9" textAnchor="middle" fontSize="80" fontWeight="900">64</text>
+        <text x="150" y="150" fill="white" textAnchor="middle" fontSize="22" fontWeight="bold">TOUGHEST</text>
+        <text x="150" y="180" fill="white" textAnchor="middle" fontSize="22" fontWeight="bold">QUESTIONS</text>
+        
+        {/* Author Name */}
+        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+      </svg>
+    ),
+    features: ["HR Secrets", "Winning Answers", "Crack Any Interview"],
+    isPopular: true,
+    colorClass: "btn-dark"
+  },
+
+  // 8. Body Language
+  {
+    id: 8,
     title: "Body Language Mastery",
     description: "Learn suggested body language tips to project confidence and ace your interviews.",
     price: "₹89",
     rawPrice: 89,
     type: "PDF Guide",
-    // PURPLE COVER
     coverImage: (
       <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -233,15 +255,50 @@ const products = [
           </linearGradient>
         </defs>
         <rect width="300" height="320" fill="url(#gradBody)" />
+        
+        {/* Institute Name */}
+        <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
+
         <circle cx="150" cy="110" r="40" fill="none" stroke="white" strokeWidth="4" />
         <path d="M150 150 L150 220 M120 180 L180 180" stroke="white" strokeWidth="4" />
         <text x="150" y="260" fill="white" textAnchor="middle" fontSize="24" fontWeight="bold">BODY LANGUAGE</text>
-        <text x="150" y="290" fill="#fab1a0" textAnchor="middle" fontSize="14">Secrets of Success</text>
+        
+        {/* Author Name */}
+        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     features: ["Non-verbal Skills", "Interview Posture", "Confidence Hacks"],
     isPopular: false,
     colorClass: "btn-dark"
+  },
+
+  // 9. Personality Development (Price 49)
+  {
+    id: 9,
+    title: "Vyaktitva Vikasam",
+    description: "Personality Development by Swami Vivekananda (Telugu). Build character, confidence, and leadership.",
+    price: "₹49", // Updated Price
+    rawPrice: 49, // Updated Price
+    type: "Telugu Book",
+    coverImage: (
+      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="320" fill="#fff5d7" />
+        <rect x="15" y="40" width="270" height="240" fill="none" stroke="#8b4513" strokeWidth="3" />
+        
+        {/* Institute Name */}
+        <text x="150" y="30" fill="#8b4513" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
+
+        <text x="150" y="120" fill="#8b4513" textAnchor="middle" fontSize="34" fontFamily="serif" fontWeight="900">వ్యక్తిత్వ</text>
+        <text x="150" y="170" fill="#8b4513" textAnchor="middle" fontSize="34" fontFamily="serif" fontWeight="900">వికాసం</text>
+        <text x="150" y="250" fill="#555" textAnchor="middle" fontSize="16" fontFamily="serif">స్వామి వివేకానంద</text>
+        
+        {/* Author Name */}
+        <text x="150" y="300" fill="#8b4513" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+      </svg>
+    ),
+    features: ["Pure Telugu", "Self Confidence", "Life Lessons"],
+    isPopular: false,
+    colorClass: "btn-warning text-dark"
   }
 ];
 
@@ -252,20 +309,15 @@ export default function MaterialsPage() {
     setLoadingId(product.id);
 
     try {
-      // 1. Create Order
       const res = await fetch('/api/create-order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount: product.rawPrice }),
       });
 
-      if (!res.ok) {
-        throw new Error('Server Error');
-      }
-
+      if (!res.ok) throw new Error('Server Error');
       const order = await res.json();
 
-      // 2. Open Razorpay
       const options = {
         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, 
         amount: order.amount,
@@ -274,7 +326,6 @@ export default function MaterialsPage() {
         description: `Download: ${product.title}`,
         order_id: order.id,
         handler: async function (response: any) {
-          // 3. Verify Payment
           const verifyRes = await fetch('/api/verify-payment', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -360,7 +411,6 @@ export default function MaterialsPage() {
 
       <section className="py-5">
         <div className="container">
-          {/* Responsive Grid: 1 col on mobile, 2 on tablet, 3 on desktop */}
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
             {products.map((product) => (
               <div key={product.id} className="col">
@@ -374,7 +424,6 @@ export default function MaterialsPage() {
                     </div>
                   )}
                   
-                  {/* Poster Image Area */}
                   <div className="position-relative bg-light d-flex align-items-center justify-content-center" style={{ height: '300px', overflow: 'hidden' }}>
                     <div className="shadow-lg" style={{ width: '80%', height: '90%', borderRadius: '8px', transform: 'perspective(1000px) rotateY(5deg)' }}>
                       {product.coverImage}
