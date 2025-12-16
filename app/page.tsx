@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-// ========== PRODUCT DATA (9 BOOKS - DISPLAY ONLY) ==========
+// ========== PRODUCT DATA (UPDATED DESIGN) ==========
 const products = [
   // 1. 1000 Verbs
   {
@@ -26,19 +26,19 @@ const products = [
     price: "₹99",
     type: "PDF E-Book",
     coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+      <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" style={{ stopColor: '#004e92', stopOpacity: 1 }} />
             <stop offset="100%" style={{ stopColor: '#000428', stopOpacity: 1 }} />
           </linearGradient>
         </defs>
-        <rect width="300" height="320" fill="url(#grad1)" />
-        <rect x="20" y="40" width="260" height="240" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="2" />
+        <rect width="300" height="340" fill="url(#grad1)" rx="8" />
+        <rect x="20" y="40" width="260" height="260" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="2" />
         <text x="150" y="30" fill="#4facfe" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
         <text x="150" y="140" fill="white" textAnchor="middle" fontSize="60" fontWeight="900">1000</text>
         <text x="150" y="180" fill="#4facfe" textAnchor="middle" fontSize="28" fontWeight="bold">VERB FORMS</text>
-        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+        <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     isPopular: false,
@@ -51,18 +51,19 @@ const products = [
     price: "₹129",
     type: "PDF E-Book",
     coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+      <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="gradVocab" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" style={{ stopColor: '#f12711', stopOpacity: 1 }} />
             <stop offset="100%" style={{ stopColor: '#f5af19', stopOpacity: 1 }} />
           </linearGradient>
         </defs>
-        <rect width="300" height="320" fill="url(#gradVocab)" />
+        <rect width="300" height="340" fill="url(#gradVocab)" rx="8" />
         <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
-        <circle cx="150" cy="120" r="50" fill="white" opacity="0.2" />
-        <text x="150" y="160" fill="white" textAnchor="middle" fontSize="36" fontWeight="900">VOCAB</text>
-        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+        <circle cx="150" cy="140" r="50" fill="white" opacity="0.2" />
+        <text x="150" y="180" fill="white" textAnchor="middle" fontSize="36" fontWeight="900">VOCAB</text>
+        <text x="150" y="220" fill="#333" textAnchor="middle" fontSize="24" fontWeight="bold">BOOSTER</text>
+        <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     isPopular: false,
@@ -75,16 +76,18 @@ const products = [
     price: "₹149",
     type: "PDF E-Book",
     coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+      <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
         <linearGradient id="gradInter" x1="0%" y1="0%" x2="0%" y2="100%">
           <stop offset="0%" style={{ stopColor: '#00c6ff', stopOpacity: 1 }} />
           <stop offset="100%" style={{ stopColor: '#0072ff', stopOpacity: 1 }} />
         </linearGradient>
-        <rect width="300" height="320" fill="url(#gradInter)" />
+        <rect width="300" height="340" fill="url(#gradInter)" rx="8" />
+        <rect x="50" y="0" width="200" height="340" fill="rgba(255,255,255,0.1)" />
         <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
-        <text x="150" y="140" fill="white" textAnchor="middle" fontSize="32" fontWeight="900">GRAMMAR</text>
-        <text x="150" y="180" fill="#ffd700" textAnchor="middle" fontSize="24" fontWeight="bold">INTERMEDIATE</text>
-        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+        <text x="150" y="140" fill="white" textAnchor="middle" fontSize="24" fontWeight="bold">ENGLISH</text>
+        <text x="150" y="180" fill="white" textAnchor="middle" fontSize="32" fontWeight="900">GRAMMAR</text>
+        <text x="150" y="220" fill="#ffd700" textAnchor="middle" fontSize="24" fontWeight="bold">INTERMEDIATE</text>
+        <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     isPopular: false,
@@ -97,18 +100,18 @@ const products = [
     price: "₹149",
     type: "PDF E-Book",
     coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+      <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="gradAdv" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" style={{ stopColor: '#11998e', stopOpacity: 1 }} />
             <stop offset="100%" style={{ stopColor: '#38ef7d', stopOpacity: 1 }} />
           </linearGradient>
         </defs>
-        <rect width="300" height="320" fill="url(#gradAdv)" />
+        <rect width="300" height="340" fill="url(#gradAdv)" rx="8" />
         <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
-        <text x="150" y="120" fill="white" textAnchor="middle" fontSize="38" fontWeight="900">English</text>
-        <text x="150" y="160" fill="#1a2a6c" fontSize="38" fontWeight="900">Grammar</text>
-        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+        <text x="150" y="140" fill="white" textAnchor="middle" fontSize="38" fontWeight="900">English</text>
+        <text x="150" y="180" fill="#1a2a6c" fontSize="38" fontWeight="900">Grammar</text>
+        <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     isPopular: false,
@@ -121,18 +124,18 @@ const products = [
     price: "₹499",
     type: "ZIP Bundle (7GB)",
     coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+      <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="gradIelts" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" style={{ stopColor: '#8E0E00', stopOpacity: 1 }} />
             <stop offset="100%" style={{ stopColor: '#1F1C18', stopOpacity: 1 }} />
           </linearGradient>
         </defs>
-        <rect width="300" height="320" fill="url(#gradIelts)" />
+        <rect width="300" height="340" fill="url(#gradIelts)" rx="8" />
         <text x="150" y="30" fill="#FFD700" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
         <text x="150" y="150" fill="white" textAnchor="middle" fontSize="48" fontWeight="900">IELTS</text>
         <text x="150" y="190" fill="white" textAnchor="middle" fontSize="24" fontWeight="bold">SUCCESS FORMULA</text>
-        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+        <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     isPopular: true,
@@ -145,11 +148,11 @@ const products = [
     price: "₹99",
     type: "PDF E-Book",
     coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
-        <rect width="300" height="320" fill="#636e72" />
+      <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="340" fill="#636e72" rx="8" />
         <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
         <text x="150" y="230" fill="white" textAnchor="middle" fontSize="28" fontWeight="bold">TELL ME</text>
-        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+        <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     isPopular: false,
@@ -162,11 +165,11 @@ const products = [
     price: "₹129",
     type: "PDF Guide",
     coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
-        <rect width="300" height="320" fill="#2d3436" />
+      <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="340" fill="#2d3436" rx="8" />
         <text x="150" y="30" fill="#00cec9" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
         <text x="150" y="100" fill="#00cec9" textAnchor="middle" fontSize="80" fontWeight="900">64</text>
-        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+        <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     isPopular: true,
@@ -179,35 +182,35 @@ const products = [
     price: "₹89",
     type: "PDF Guide",
     coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+      <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="gradBody" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" style={{ stopColor: '#8e44ad', stopOpacity: 1 }} />
             <stop offset="100%" style={{ stopColor: '#3498db', stopOpacity: 1 }} />
           </linearGradient>
         </defs>
-        <rect width="300" height="320" fill="url(#gradBody)" />
+        <rect width="300" height="340" fill="url(#gradBody)" rx="8" />
         <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
         <text x="150" y="260" fill="white" textAnchor="middle" fontSize="24" fontWeight="bold">BODY LANGUAGE</text>
-        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+        <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     isPopular: false,
     colorClass: "text-primary"
   },
-  // 9. Personality Development
+  // 9. Personality Development (Title Changed)
   {
     id: 9,
-    title: "Vyaktitva Vikasam",
+    title: "Vyaktitva Vikasam (Personality Development)", // 👈 Title Updated
     price: "₹49",
     type: "Telugu Book",
     coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
-        <rect width="300" height="320" fill="#fff5d7" />
+      <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="340" fill="#fff5d7" rx="8" />
         <text x="150" y="30" fill="#8b4513" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
         <text x="150" y="120" fill="#8b4513" textAnchor="middle" fontSize="34" fontFamily="serif" fontWeight="900">వ్యక్తిత్వ</text>
         <text x="150" y="170" fill="#8b4513" textAnchor="middle" fontSize="34" fontFamily="serif" fontWeight="900">వికాసం</text>
-        <text x="150" y="300" fill="#8b4513" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+        <text x="150" y="310" fill="#8b4513" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     isPopular: false,
@@ -215,7 +218,6 @@ const products = [
   }
 ];
 
-// రివ్యూ ఆబ్జెక్ట్ టైప్
 interface Review {
   name: string;
   rating: number;
@@ -228,7 +230,6 @@ export default function Home() {
   const [reviewsLoading, setReviewsLoading] = useState(true);
 
   useEffect(() => {
-    // Bootstrap Carousel Init
     const carouselElement = document.getElementById('testimonialsCarousel');
     if (carouselElement) {
       new (window as any).bootstrap.Carousel(carouselElement, {
@@ -237,7 +238,6 @@ export default function Home() {
       });
     }
 
-    // Fetch Reviews
     const fetchLatestReviews = async () => {
       try {
         setReviewsLoading(true);
@@ -258,7 +258,7 @@ export default function Home() {
     <>
       <Navbar />
 
-      {/* === 1. HERO SECTION === */}
+      {/* === 1. HERO SECTION (Buttons Kept) === */}
       <section className="hero-section text-center text-white position-relative" style={{marginTop: '70px'}}>
         <div className="hero-overlay"></div>
         <div className="container position-relative z-2 h-100 d-flex flex-column justify-content-center align-items-center">
@@ -270,6 +270,9 @@ export default function Home() {
           </p>
           
           <div className="d-flex gap-3 justify-content-center flex-wrap">
+              <Link href="/about" className="btn btn-success btn-lg rounded-pill shadow-lg px-4">
+             About Us
+            </Link>
             <Link href="/contact" className="btn btn-primary btn-lg rounded-pill shadow-lg px-4">
               Book Demo Class
             </Link>
@@ -317,13 +320,12 @@ export default function Home() {
         <div className="container">
           <div className="row align-items-center g-5">
             <div className="col-lg-6">
-              {/* Ensure you have an image named 'about-home-image.jpg' in your public folder */}
               <div className="position-relative rounded-4 overflow-hidden shadow-lg">
                 <Image
                   src="/about-home-image.jpg"
                   alt="About IBC Spoken English"
-                  width={300}
-                  height={250}
+                  width={600}
+                  height={400}
                   className="img-fluid"
                   style={{ objectFit: 'cover' }}
                 />
@@ -362,7 +364,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* === 4. REVIEWS SECTION (Dynamic) === */}
+      {/* === 4. REVIEWS SECTION === */}
       <section
         id="testimonialsCarousel"
         className="carousel slide py-5"
@@ -421,7 +423,7 @@ export default function Home() {
         )}
       </section>
 
-      {/* === 5. NEW RESOURCE BOOKS SECTION (Replaces old Featured Materials) === */}
+      {/* === 5. NEW RESOURCE BOOKS SECTION (Updated) === */}
       <section className="py-5 bg-white">
         <div className="container">
           <div className="text-center mb-5">
@@ -444,10 +446,11 @@ export default function Home() {
                         </div>
                     )}
                     
-                    {/* Poster Image Area */}
-                    <div className="position-relative bg-light d-flex align-items-center justify-content-center" style={{ height: '220px', overflow: 'hidden' }}>
-                        <div className="shadow" style={{ width: '70%', height: '90%', borderRadius: '4px', transform: 'perspective(1000px) rotateY(5deg)' }}>
-                        {product.coverImage}
+                    {/* Poster Image Area - Removed 'bg-light' and increased Height to 260px */}
+                    <div className="position-relative d-flex align-items-center justify-content-center pt-3" style={{ height: '260px', overflow: 'hidden' }}>
+                        {/* Removed shadow box container, now SVG fills more space naturally */}
+                        <div style={{ width: '80%', height: '100%', borderRadius: '4px', transform: 'perspective(1000px) rotateY(5deg)' }}>
+                           {product.coverImage}
                         </div>
                     </div>
 
@@ -475,9 +478,6 @@ export default function Home() {
         <div className="container">
           <div className="text-center mb-5">
             <h2 className="section-heading">Our Services</h2>
-            <p className="section-subheading">
-              Comprehensive training programs designed for your success
-            </p>
           </div>
           <div className="row g-4">
             <div className="col-lg-4 col-md-6">
