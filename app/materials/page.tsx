@@ -257,35 +257,35 @@ const products = [
     colorClass: "btn-warning text-dark"
   },
 
-  // 10. TEST PRODUCT (₹1)
-  {
-    id: 999, // Special ID
-    title: "Test Payment Check",
-    description: "This is for testing Razorpay & Admin Dashboard. Do not buy.",
-    price: "₹1",
-    rawPrice: 1, // కేవలం 1 రూపాయి
-    type: "TEST ITEM",
-    coverImage: (
-      <div style={{
-        width: '100%', 
-        height: '100%', 
-        background: '#e9ecef', 
-        display: 'flex', 
-        alignItems: 'center', 
-        justifyContent: 'center', 
-        borderRadius: '8px',
-        border: '2px dashed #333'
-      }}>
-        <div className="text-center">
-          <h3 className="fw-bold text-dark mb-0">TEST</h3>
-          <p className="small text-muted mb-0">₹1 Only</p>
-        </div>
-      </div>
-    ),
-    features: ["Test Database", "Test Dashboard", "No Refund"],
-    isPopular: false,
-    colorClass: "btn-secondary"
-  }
+  // // 10. TEST PRODUCT (₹1)
+  // {
+  //   id: 999, // Special ID
+  //   title: "Test Payment Check",
+  //   description: "This is for testing Razorpay & Admin Dashboard. Do not buy.",
+  //   price: "₹1",
+  //   rawPrice: 1, // కేవలం 1 రూపాయి
+  //   type: "TEST ITEM",
+  //   coverImage: (
+  //     <div style={{
+  //       width: '100%', 
+  //       height: '100%', 
+  //       background: '#e9ecef', 
+  //       display: 'flex', 
+  //       alignItems: 'center', 
+  //       justifyContent: 'center', 
+  //       borderRadius: '8px',
+  //       border: '2px dashed #333'
+  //     }}>
+  //       <div className="text-center">
+  //         <h3 className="fw-bold text-dark mb-0">TEST</h3>
+  //         <p className="small text-muted mb-0">₹1 Only</p>
+  //       </div>
+  //     </div>
+  //   ),
+  //   features: ["Test Database", "Test Dashboard", "No Refund"],
+  //   isPopular: false,
+  //   colorClass: "btn-secondary"
+  // }
 ];
 
 export default function MaterialsPage() {
