@@ -145,7 +145,7 @@ export default function AdminDashboard() {
                   </h6>
                   <p className="small mb-3">View list of students registered for demo.</p>
                   <a 
-                    href="https://docs.google.com/spreadsheets/d/YOUR_SHEET_ID/edit" // 👈 నీ గూగుల్ షీట్ లింక్ ఇక్కడ పెట్టు
+                    href="https://docs.google.com/spreadsheets/d/15btI2Qf2cUM9J9VHo-9McMD0u0EjH11jW3s8UDcM1gU/edit?resourcekey=&gid=24753081#gid=24753081" // 👈 ఇక్కడ నీ గూగుల్ షీట్ లింక్ పెట్టు
                     target="_blank" 
                     rel="noreferrer"
                     className="btn btn-dark btn-sm rounded-pill w-100 d-flex align-items-center justify-content-center"
