@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { Download, Check, Award } from 'lucide-react';
 import Swal from 'sweetalert2';
 
-// ========== PRODUCT DATA (ORDERED 1-9) ==========
+// ========== PRODUCT DATA (UPDATED DESIGN) ==========
 const products = [
   // 1. 1000 Verbs
   {
@@ -18,25 +18,20 @@ const products = [
     rawPrice: 99,
     type: "PDF E-Book",
     coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+      <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" style={{ stopColor: '#004e92', stopOpacity: 1 }} />
             <stop offset="100%" style={{ stopColor: '#000428', stopOpacity: 1 }} />
           </linearGradient>
         </defs>
-        <rect width="300" height="320" fill="url(#grad1)" />
-        <rect x="20" y="40" width="260" height="240" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="2" />
-        
-        {/* Institute Name */}
+        <rect width="300" height="340" fill="url(#grad1)" rx="8" />
+        <rect x="20" y="40" width="260" height="260" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="2" />
         <text x="150" y="30" fill="#4facfe" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
-        
         <text x="150" y="140" fill="white" textAnchor="middle" fontSize="60" fontWeight="900">1000</text>
         <text x="150" y="180" fill="#4facfe" textAnchor="middle" fontSize="28" fontWeight="bold">VERB FORMS</text>
         <text x="150" y="210" fill="white" textAnchor="middle" fontSize="16">& Sentences</text>
-        
-        {/* Author Name */}
-        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+        <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     features: ["Telugu Meanings", "V1 V2 V3 Forms", "Daily Usage Examples"],
@@ -53,24 +48,19 @@ const products = [
     rawPrice: 129,
     type: "PDF E-Book",
     coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+      <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="gradVocab" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" style={{ stopColor: '#f12711', stopOpacity: 1 }} />
             <stop offset="100%" style={{ stopColor: '#f5af19', stopOpacity: 1 }} />
           </linearGradient>
         </defs>
-        <rect width="300" height="320" fill="url(#gradVocab)" />
-        
-        {/* Institute Name */}
+        <rect width="300" height="340" fill="url(#gradVocab)" rx="8" />
         <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
-
-        <circle cx="150" cy="120" r="50" fill="white" opacity="0.2" />
-        <text x="150" y="160" fill="white" textAnchor="middle" fontSize="36" fontWeight="900">VOCAB</text>
-        <text x="150" y="200" fill="#333" textAnchor="middle" fontSize="24" fontWeight="bold">BOOSTER</text>
-        
-        {/* Author Name */}
-        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+        <circle cx="150" cy="140" r="50" fill="white" opacity="0.2" />
+        <text x="150" y="180" fill="white" textAnchor="middle" fontSize="36" fontWeight="900">VOCAB</text>
+        <text x="150" y="220" fill="#333" textAnchor="middle" fontSize="24" fontWeight="bold">BOOSTER</text>
+        <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     features: ["Daily Vocabulary", "Synonyms & Antonyms", "Easy to Remember"],
@@ -87,23 +77,18 @@ const products = [
     rawPrice: 149,
     type: "PDF E-Book",
     coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+      <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
         <linearGradient id="gradInter" x1="0%" y1="0%" x2="0%" y2="100%">
           <stop offset="0%" style={{ stopColor: '#00c6ff', stopOpacity: 1 }} />
           <stop offset="100%" style={{ stopColor: '#0072ff', stopOpacity: 1 }} />
         </linearGradient>
-        <rect width="300" height="320" fill="url(#gradInter)" />
-        <rect x="50" y="0" width="200" height="320" fill="rgba(255,255,255,0.1)" />
-        
-        {/* Institute Name */}
+        <rect width="300" height="340" fill="url(#gradInter)" rx="8" />
+        <rect x="50" y="0" width="200" height="340" fill="rgba(255,255,255,0.1)" />
         <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
-
-        <text x="150" y="100" fill="white" textAnchor="middle" fontSize="24" fontWeight="bold">ENGLISH</text>
-        <text x="150" y="140" fill="white" textAnchor="middle" fontSize="32" fontWeight="900">GRAMMAR</text>
-        <text x="150" y="180" fill="#ffd700" textAnchor="middle" fontSize="24" fontWeight="bold">INTERMEDIATE</text>
-        
-        {/* Author Name */}
-        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+        <text x="150" y="140" fill="white" textAnchor="middle" fontSize="24" fontWeight="bold">ENGLISH</text>
+        <text x="150" y="180" fill="white" textAnchor="middle" fontSize="32" fontWeight="900">GRAMMAR</text>
+        <text x="150" y="220" fill="#ffd700" textAnchor="middle" fontSize="24" fontWeight="bold">INTERMEDIATE</text>
+        <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     features: ["Intermediate Level", "Clear Explanations", "Exercises"],
@@ -111,7 +96,7 @@ const products = [
     colorClass: "btn-info text-white"
   },
 
-  // 4. Advanced Grammar
+  // 4. Advanced Grammar (FIXED TEXT ALIGNMENT)
   {
     id: 4,
     title: "Advanced Grammar in Use",
@@ -120,24 +105,22 @@ const products = [
     rawPrice: 149,
     type: "PDF E-Book",
     coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+      <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="gradAdv" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" style={{ stopColor: '#11998e', stopOpacity: 1 }} />
             <stop offset="100%" style={{ stopColor: '#38ef7d', stopOpacity: 1 }} />
           </linearGradient>
         </defs>
-        <rect width="300" height="320" fill="url(#gradAdv)" />
-        
-        {/* Institute Name */}
+        <rect width="300" height="340" fill="url(#gradAdv)" rx="8" />
         <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
-
-        <text x="150" y="120" fill="white" textAnchor="middle" fontSize="38" fontWeight="900">English</text>
-        <text x="150" y="160" fill="#1a2a6c" fontSize="38" fontWeight="900">Grammar</text>
-        <text x="150" y="200" fill="white" fontSize="38" fontWeight="900">in Use</text>
         
-        {/* Author Name */}
-        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+        {/* Fixed: Added textAnchor="middle" to center the text properly */}
+        <text x="150" y="140" fill="white" textAnchor="middle" fontSize="38" fontWeight="900">English</text>
+        <text x="150" y="180" fill="#1a2a6c" textAnchor="middle" fontSize="38" fontWeight="900">Grammar</text>
+        <text x="150" y="220" fill="white" textAnchor="middle" fontSize="38" fontWeight="900">in Use</text>
+        
+        <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     features: ["Advanced Concepts", "Practice Exercises", "Self-study Guide"],
@@ -154,25 +137,20 @@ const products = [
     rawPrice: 499,
     type: "ZIP Bundle (7GB)",
     coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+      <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="gradIelts" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" style={{ stopColor: '#8E0E00', stopOpacity: 1 }} />
             <stop offset="100%" style={{ stopColor: '#1F1C18', stopOpacity: 1 }} />
           </linearGradient>
         </defs>
-        <rect width="300" height="320" fill="url(#gradIelts)" />
-        
-        {/* Institute Name */}
+        <rect width="300" height="340" fill="url(#gradIelts)" rx="8" />
         <text x="150" y="30" fill="#FFD700" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
-
         <rect x="0" y="50" width="300" height="40" fill="#FFD700" />
         <text x="150" y="75" fill="black" textAnchor="middle" fontSize="18" fontWeight="bold">★ PREMIUM KIT ★</text>
         <text x="150" y="150" fill="white" textAnchor="middle" fontSize="48" fontWeight="900">IELTS</text>
         <text x="150" y="190" fill="white" textAnchor="middle" fontSize="24" fontWeight="bold">SUCCESS FORMULA</text>
-        
-        {/* Author Name */}
-        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+        <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     features: ["7GB Content", "Audio & Video", "Band 9.0 Tips"],
@@ -189,19 +167,14 @@ const products = [
     rawPrice: 99,
     type: "PDF E-Book",
     coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
-        <rect width="300" height="320" fill="#636e72" />
-        
-        {/* Institute Name */}
+      <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="340" fill="#636e72" rx="8" />
         <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
-
         <path d="M100 100 L200 100 L150 180 Z" fill="#fab1a0" />
         <text x="150" y="80" fill="white" textAnchor="middle" fontSize="20" fontWeight="bold">THE GUIDE TO</text>
         <text x="150" y="230" fill="white" textAnchor="middle" fontSize="28" fontWeight="bold">TELL ME</text>
         <text x="150" y="265" fill="#fab1a0" textAnchor="middle" fontSize="24" fontWeight="bold">ABOUT YOURSELF</text>
-        
-        {/* Author Name */}
-        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+        <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     features: ["Script Templates", "Mistakes to Avoid", "First Impressions"],
@@ -218,19 +191,13 @@ const products = [
     rawPrice: 129,
     type: "PDF Guide",
     coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
-        <rect width="300" height="320" fill="#2d3436" />
-        <rect x="20" y="40" width="260" height="240" fill="none" stroke="#00cec9" strokeWidth="2" />
-        
-        {/* Institute Name */}
+      <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="340" fill="#2d3436" rx="8" />
         <text x="150" y="30" fill="#00cec9" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
-
         <text x="150" y="100" fill="#00cec9" textAnchor="middle" fontSize="80" fontWeight="900">64</text>
         <text x="150" y="150" fill="white" textAnchor="middle" fontSize="22" fontWeight="bold">TOUGHEST</text>
         <text x="150" y="180" fill="white" textAnchor="middle" fontSize="22" fontWeight="bold">QUESTIONS</text>
-        
-        {/* Author Name */}
-        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+        <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     features: ["HR Secrets", "Winning Answers", "Crack Any Interview"],
@@ -247,24 +214,19 @@ const products = [
     rawPrice: 89,
     type: "PDF Guide",
     coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+      <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="gradBody" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" style={{ stopColor: '#8e44ad', stopOpacity: 1 }} />
             <stop offset="100%" style={{ stopColor: '#3498db', stopOpacity: 1 }} />
           </linearGradient>
         </defs>
-        <rect width="300" height="320" fill="url(#gradBody)" />
-        
-        {/* Institute Name */}
+        <rect width="300" height="340" fill="url(#gradBody)" rx="8" />
         <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
-
         <circle cx="150" cy="110" r="40" fill="none" stroke="white" strokeWidth="4" />
         <path d="M150 150 L150 220 M120 180 L180 180" stroke="white" strokeWidth="4" />
         <text x="150" y="260" fill="white" textAnchor="middle" fontSize="24" fontWeight="bold">BODY LANGUAGE</text>
-        
-        {/* Author Name */}
-        <text x="150" y="300" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+        <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     features: ["Non-verbal Skills", "Interview Posture", "Confidence Hacks"],
@@ -272,33 +234,57 @@ const products = [
     colorClass: "btn-dark"
   },
 
-  // 9. Personality Development (Price 49)
+  // 9. Personality Development
   {
     id: 9,
-    title: "Vyaktitva Vikasam",
+    title: "Vyaktitva Vikasam (Personality Development)",
     description: "Personality Development by Swami Vivekananda (Telugu). Build character, confidence, and leadership.",
-    price: "₹49", // Updated Price
-    rawPrice: 49, // Updated Price
+    price: "₹49",
+    rawPrice: 49,
     type: "Telugu Book",
     coverImage: (
-      <svg width="100%" height="100%" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
-        <rect width="300" height="320" fill="#fff5d7" />
-        <rect x="15" y="40" width="270" height="240" fill="none" stroke="#8b4513" strokeWidth="3" />
-        
-        {/* Institute Name */}
+      <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="340" fill="#fff5d7" rx="8" />
         <text x="150" y="30" fill="#8b4513" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
-
         <text x="150" y="120" fill="#8b4513" textAnchor="middle" fontSize="34" fontFamily="serif" fontWeight="900">వ్యక్తిత్వ</text>
         <text x="150" y="170" fill="#8b4513" textAnchor="middle" fontSize="34" fontFamily="serif" fontWeight="900">వికాసం</text>
         <text x="150" y="250" fill="#555" textAnchor="middle" fontSize="16" fontFamily="serif">స్వామి వివేకానంద</text>
-        
-        {/* Author Name */}
-        <text x="150" y="300" fill="#8b4513" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
+        <text x="150" y="310" fill="#8b4513" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     features: ["Pure Telugu", "Self Confidence", "Life Lessons"],
     isPopular: false,
     colorClass: "btn-warning text-dark"
+  },
+
+  // 10. TEST PRODUCT (₹1)
+  {
+    id: 999, // Special ID
+    title: "Test Payment Check",
+    description: "This is for testing Razorpay & Admin Dashboard. Do not buy.",
+    price: "₹1",
+    rawPrice: 1, // కేవలం 1 రూపాయి
+    type: "TEST ITEM",
+    coverImage: (
+      <div style={{
+        width: '100%', 
+        height: '100%', 
+        background: '#e9ecef', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        borderRadius: '8px',
+        border: '2px dashed #333'
+      }}>
+        <div className="text-center">
+          <h3 className="fw-bold text-dark mb-0">TEST</h3>
+          <p className="small text-muted mb-0">₹1 Only</p>
+        </div>
+      </div>
+    ),
+    features: ["Test Database", "Test Dashboard", "No Refund"],
+    isPopular: false,
+    colorClass: "btn-secondary"
   }
 ];
 
@@ -424,8 +410,9 @@ export default function MaterialsPage() {
                     </div>
                   )}
                   
-                  <div className="position-relative bg-light d-flex align-items-center justify-content-center" style={{ height: '300px', overflow: 'hidden' }}>
-                    <div className="shadow-lg" style={{ width: '80%', height: '90%', borderRadius: '8px', transform: 'perspective(1000px) rotateY(5deg)' }}>
+                  {/* UPDATE: Increased Height to 340px and removed background to make it clean */}
+                  <div className="position-relative d-flex align-items-center justify-content-center pt-3" style={{ height: '340px', overflow: 'hidden' }}>
+                    <div style={{ width: '85%', height: '100%', borderRadius: '4px', transform: 'perspective(1000px) rotateY(5deg)' }}>
                       {product.coverImage}
                     </div>
                   </div>

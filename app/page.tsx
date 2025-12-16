@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-// ========== PRODUCT DATA (UPDATED DESIGN) ==========
+// ========== PRODUCT DATA (UPDATED FOR HOME PAGE) ==========
 const products = [
   // 1. 1000 Verbs
   {
@@ -93,7 +93,7 @@ const products = [
     isPopular: false,
     colorClass: "text-info"
   },
-  // 4. Advanced Grammar
+  // 4. Advanced Grammar (FIXED)
   {
     id: 4,
     title: "Advanced Grammar",
@@ -109,8 +109,12 @@ const products = [
         </defs>
         <rect width="300" height="340" fill="url(#gradAdv)" rx="8" />
         <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
+        
+        {/* Fixed Alignment Here */}
         <text x="150" y="140" fill="white" textAnchor="middle" fontSize="38" fontWeight="900">English</text>
-        <text x="150" y="180" fill="#1a2a6c" fontSize="38" fontWeight="900">Grammar</text>
+        <text x="150" y="180" fill="#1a2a6c" textAnchor="middle" fontSize="38" fontWeight="900">Grammar</text>
+        <text x="150" y="220" fill="white" textAnchor="middle" fontSize="38" fontWeight="900">in Use</text>
+        
         <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
@@ -133,6 +137,8 @@ const products = [
         </defs>
         <rect width="300" height="340" fill="url(#gradIelts)" rx="8" />
         <text x="150" y="30" fill="#FFD700" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
+        <rect x="0" y="50" width="300" height="40" fill="#FFD700" />
+        <text x="150" y="75" fill="black" textAnchor="middle" fontSize="18" fontWeight="bold">★ PREMIUM KIT ★</text>
         <text x="150" y="150" fill="white" textAnchor="middle" fontSize="48" fontWeight="900">IELTS</text>
         <text x="150" y="190" fill="white" textAnchor="middle" fontSize="24" fontWeight="bold">SUCCESS FORMULA</text>
         <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
@@ -151,7 +157,10 @@ const products = [
       <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
         <rect width="300" height="340" fill="#636e72" rx="8" />
         <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
+        <path d="M100 100 L200 100 L150 180 Z" fill="#fab1a0" />
+        <text x="150" y="80" fill="white" textAnchor="middle" fontSize="20" fontWeight="bold">THE GUIDE TO</text>
         <text x="150" y="230" fill="white" textAnchor="middle" fontSize="28" fontWeight="bold">TELL ME</text>
+        <text x="150" y="265" fill="#fab1a0" textAnchor="middle" fontSize="24" fontWeight="bold">ABOUT YOURSELF</text>
         <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
@@ -169,6 +178,8 @@ const products = [
         <rect width="300" height="340" fill="#2d3436" rx="8" />
         <text x="150" y="30" fill="#00cec9" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
         <text x="150" y="100" fill="#00cec9" textAnchor="middle" fontSize="80" fontWeight="900">64</text>
+        <text x="150" y="150" fill="white" textAnchor="middle" fontSize="22" fontWeight="bold">TOUGHEST</text>
+        <text x="150" y="180" fill="white" textAnchor="middle" fontSize="22" fontWeight="bold">QUESTIONS</text>
         <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
@@ -191,6 +202,8 @@ const products = [
         </defs>
         <rect width="300" height="340" fill="url(#gradBody)" rx="8" />
         <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
+        <circle cx="150" cy="110" r="40" fill="none" stroke="white" strokeWidth="4" />
+        <path d="M150 150 L150 220 M120 180 L180 180" stroke="white" strokeWidth="4" />
         <text x="150" y="260" fill="white" textAnchor="middle" fontSize="24" fontWeight="bold">BODY LANGUAGE</text>
         <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
@@ -198,10 +211,10 @@ const products = [
     isPopular: false,
     colorClass: "text-primary"
   },
-  // 9. Personality Development (Title Changed)
+  // 9. Personality Development
   {
     id: 9,
-    title: "Vyaktitva Vikasam (Personality Development)", // 👈 Title Updated
+    title: "Vyaktitva Vikasam (Personality Development)",
     price: "₹49",
     type: "Telugu Book",
     coverImage: (
@@ -210,6 +223,7 @@ const products = [
         <text x="150" y="30" fill="#8b4513" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
         <text x="150" y="120" fill="#8b4513" textAnchor="middle" fontSize="34" fontFamily="serif" fontWeight="900">వ్యక్తిత్వ</text>
         <text x="150" y="170" fill="#8b4513" textAnchor="middle" fontSize="34" fontFamily="serif" fontWeight="900">వికాసం</text>
+        <text x="150" y="250" fill="#555" textAnchor="middle" fontSize="16" fontFamily="serif">స్వామి వివేకానంద</text>
         <text x="150" y="310" fill="#8b4513" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
@@ -258,7 +272,7 @@ export default function Home() {
     <>
       <Navbar />
 
-      {/* === 1. HERO SECTION (Buttons Kept) === */}
+      {/* === 1. HERO SECTION === */}
       <section className="hero-section text-center text-white position-relative" style={{marginTop: '70px'}}>
         <div className="hero-overlay"></div>
         <div className="container position-relative z-2 h-100 d-flex flex-column justify-content-center align-items-center">
@@ -324,8 +338,8 @@ export default function Home() {
                 <Image
                   src="/about-home-image.jpg"
                   alt="About IBC Spoken English"
-                  width={600}
-                  height={400}
+                  width={350}
+                  height={250}
                   className="img-fluid"
                   style={{ objectFit: 'cover' }}
                 />
@@ -423,7 +437,7 @@ export default function Home() {
         )}
       </section>
 
-      {/* === 5. NEW RESOURCE BOOKS SECTION (Updated) === */}
+      {/* === 5. NEW RESOURCE BOOKS SECTION (Updated Design) === */}
       <section className="py-5 bg-white">
         <div className="container">
           <div className="text-center mb-5">
@@ -446,10 +460,9 @@ export default function Home() {
                         </div>
                     )}
                     
-                    {/* Poster Image Area - Removed 'bg-light' and increased Height to 260px */}
-                    <div className="position-relative d-flex align-items-center justify-content-center pt-3" style={{ height: '260px', overflow: 'hidden' }}>
-                        {/* Removed shadow box container, now SVG fills more space naturally */}
-                        <div style={{ width: '80%', height: '100%', borderRadius: '4px', transform: 'perspective(1000px) rotateY(5deg)' }}>
+                    {/* Poster Image Area - Cleaned up background, Increased Height to 340px */}
+                    <div className="position-relative d-flex align-items-center justify-content-center pt-3" style={{ height: '340px', overflow: 'hidden' }}>
+                        <div style={{ width: '85%', height: '100%', borderRadius: '4px', transform: 'perspective(1000px) rotateY(5deg)' }}>
                            {product.coverImage}
                         </div>
                     </div>

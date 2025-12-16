@@ -1,10 +1,9 @@
+
 import { NextResponse } from 'next/server';
 import crypto from 'crypto';
 import { kv } from '@vercel/kv';
 
-export const dynamic = 'force-dynamic';
-
-// 👇 ఇక్కడ నీ గూగుల్ డ్రైవ్ లింక్స్ మార్చు (ID ప్రకారం)
+// Google Drive Links Map (నువ్వు అడిగిన లింక్స్ ఇక్కడ పెట్టు)
 
 const FILE_LINKS: Record<string, string> = {
   "1": "https://drive.google.com/file/d/1EDkYQgOfj1jU7o73P1OsU_y-Lp9ihLf6/view?usp=drive_link", // 1. 1000 Verb Forms
@@ -17,52 +16,56 @@ const FILE_LINKS: Record<string, string> = {
   "8": "https://drive.google.com/file/d/1QlZEh_aQAOV_XIZKxSVvjWHRKg7z-BXD/view?usp=drive_link", // 8. Body Language
   "9": "https://drive.google.com/file/d/1XY-jM8Kr53hWoztwS3dSRuCk7_D_ixgZ/view?usp=drive_link", // 9. Personality Development (Rs 49)
 };
-
 export async function POST(req: Request) {
   try {
-    const { 
-      razorpay_order_id, 
-      razorpay_payment_id, 
-      razorpay_signature, 
+    const {
+      razorpay_order_id,
+      razorpay_payment_id,
+      razorpay_signature,
       product_id,
       user_details 
     } = await req.json();
 
-    // 1. సెక్యూరిటీ చెక్ (Signature Verification)
     const body = razorpay_order_id + "|" + razorpay_payment_id;
     const expectedSignature = crypto
       .createHmac("sha256", process.env.RAZORPAY_KEY_SECRET!)
       .update(body.toString())
       .digest("hex");
 
-    if (expectedSignature !== razorpay_signature) {
-      return NextResponse.json({ message: "Invalid Payment Signature!" }, { status: 400 });
+    if (expectedSignature === razorpay_signature) {
+      
+      // ✅ 1. Payment Data Object Create Cheyyi
+      const transactionData = {
+        razorpay_payment_id,
+        product_id,
+        amount: 9900, // Default or dynamic
+        status: 'Success',
+        date: new Date().toISOString(),
+        contact: user_details?.contact || 'N/A', // Frontend nundi pass cheyyali
+        email: user_details?.email || 'N/A'
+      };
+
+      // ✅ 2. Vercel KV Database lo Save Cheyyi
+      // (Note: Vercel Dashboard lo KV Database create chesi undali)
+      try {
+        await kv.lpush('transactions', transactionData);
+      } catch (dbError) {
+        console.error("DB Save Failed:", dbError);
+        // DB fail ayina user ki success chupinchali, so ignore error here
+      }
+
+      // ✅ 3. Return Success
+      return NextResponse.json({
+        success: true,
+        downloadLink: FILE_LINKS[String(product_id)] || "https://drive.google.com/..."
+      });
+      
+    } else {
+      return NextResponse.json({ success: false, error: "Invalid Signature" }, { status: 400 });
     }
-
-    // 2. పేమెంట్ సక్సెస్! డేటాబేస్ లో సేవ్ చేద్దాం
-    const transaction = {
-      paymentId: razorpay_payment_id,
-      orderId: razorpay_order_id,
-      productId: product_id,
-      user: user_details, // కస్టమర్ పేరు, ఈమెయిల్
-      date: new Date().toISOString(),
-      status: 'SUCCESS'
-    };
-
-    // Vercel KV లో సేవ్ చేస్తున్నాం
-    await kv.lpush('transactions', transaction);
-
-    // 3. కరెక్ట్ ఫైల్ లింక్ ని పంపుతున్నాం
-    const downloadLink = FILE_LINKS[product_id.toString()];
-
-    if (!downloadLink) {
-       return NextResponse.json({ success: true, message: "Link not found, please contact admin." });
-    }
-
-    return NextResponse.json({ success: true, downloadLink });
-
   } catch (error) {
-    console.error("Payment verification failed:", error);
-    return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
+    console.error("Verify Error:", error);
+    return NextResponse.json({ success: false, error: "Server Error" }, { status: 500 });
   }
 }
+
