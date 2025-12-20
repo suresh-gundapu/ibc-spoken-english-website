@@ -10,17 +10,34 @@ const poppins = Poppins({
   weight: ['300', '400', '500', '600', '700'],
 });
 export const metadata: Metadata = {
-  title: 'IBC Spoken English - Professional English Training',
-  description: 'Master Spoken English with 25+ years of expert training. Business communication, interview prep, and corporate training by K. SRTV Prasad.',
-  keywords: 'English training, spoken English, business communication, interview preparation, corporate training, Secunderabad',
-  authors: [{ name: 'K. SRTV Prasad' }],
+  title: {
+    default: "IBC Spoken English | Best Spoken English Institute",
+    template: "%s | IBC Spoken English"
+  },
+  description: "Learn Spoken English fluently with IBC Institute. 25+ years experience. Online & Offline classes available. Download study materials.",
+ // 👇 ఈ verification ముక్కను ఇక్కడ యాడ్ చెయ్యి
+  verification: {
+    google: "PAjHpWH5Wsim7zBer8PClUyPoxcOJeXfT2Tt3dc0N_I",
+  },
+  // 👆 ఇక్కడితో అయిపోయింది
+  keywords: ["Spoken English", "English Grammar", "IELTS Coaching", "Interview Skills", "Soft Skills", "Telugu to English", "SRTV Prasad"],
+  authors: [{ name: "K SRTV Prasad" }],
   openGraph: {
-    title: 'IBC Spoken English',
-    description: 'Professional English training and communication coaching',
-    type: 'website',
+    title: "IBC Spoken English - Master English with Confidence",
+    description: "Join thousands of successful students. Book a demo class today.",
+    url: "https://www.ibcspokenenglish.com/", // నీ లైవ్ డొమైన్ పెట్టు
+    siteName: "IBC Spoken English",
+    images: [
+      {
+        url: "/about-home-image_old.jpg", // ఏదైనా మంచి ఇమేజ్ లింక్
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
   },
 };
-
 export default function RootLayout({
   children,
 }: {
