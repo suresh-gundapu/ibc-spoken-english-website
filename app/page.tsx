@@ -17,7 +17,43 @@ import {
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
-// ========== PRODUCT DATA (UPDATED FOR HOME PAGE) ==========
+// ========== CSS STYLES FOR ANIMATIONS ==========
+const animationStyles = `
+  /* Keyframes for Fade In Up */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Base Animation Class */
+  .animate-fade-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  /* Hover Lift Effect (Mouse Moving) */
+  .hover-lift {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth Bouncy Effect */
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+    z-index: 10;
+  }
+
+  /* Delay for grid items */
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+`;
+
+// ========== PRODUCT DATA ==========
 const products = [
   // 1. 1000 Verbs
   {
@@ -93,7 +129,7 @@ const products = [
     isPopular: false,
     colorClass: "text-info"
   },
-  // 4. Advanced Grammar (FIXED)
+  // 4. Advanced Grammar
   {
     id: 4,
     title: "Advanced Grammar",
@@ -109,12 +145,9 @@ const products = [
         </defs>
         <rect width="300" height="340" fill="url(#gradAdv)" rx="8" />
         <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
-        
-        {/* Fixed Alignment Here */}
         <text x="150" y="140" fill="white" textAnchor="middle" fontSize="38" fontWeight="900">English</text>
         <text x="150" y="180" fill="#1a2a6c" textAnchor="middle" fontSize="38" fontWeight="900">Grammar</text>
         <text x="150" y="220" fill="white" textAnchor="middle" fontSize="38" fontWeight="900">in Use</text>
-        
         <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
@@ -157,10 +190,7 @@ const products = [
       <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
         <rect width="300" height="340" fill="#636e72" rx="8" />
         <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
-        <path d="M100 100 L200 100 L150 180 Z" fill="#fab1a0" />
-        <text x="150" y="80" fill="white" textAnchor="middle" fontSize="20" fontWeight="bold">THE GUIDE TO</text>
         <text x="150" y="230" fill="white" textAnchor="middle" fontSize="28" fontWeight="bold">TELL ME</text>
-        <text x="150" y="265" fill="#fab1a0" textAnchor="middle" fontSize="24" fontWeight="bold">ABOUT YOURSELF</text>
         <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
@@ -202,8 +232,6 @@ const products = [
         </defs>
         <rect width="300" height="340" fill="url(#gradBody)" rx="8" />
         <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
-        <circle cx="150" cy="110" r="40" fill="none" stroke="white" strokeWidth="4" />
-        <path d="M150 150 L150 220 M120 180 L180 180" stroke="white" strokeWidth="4" />
         <text x="150" y="260" fill="white" textAnchor="middle" fontSize="24" fontWeight="bold">BODY LANGUAGE</text>
         <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
@@ -270,10 +298,11 @@ export default function Home() {
 
   return (
     <>
+      <style jsx global>{animationStyles}</style>
       <Navbar />
 
-      {/* === 1. HERO SECTION === */}
-      <section className="hero-section text-center text-white position-relative" style={{marginTop: '70px'}}>
+      {/* === 1. HERO SECTION (Buttons with Animation) === */}
+      <section className="hero-section text-center text-white position-relative animate-fade-up" style={{marginTop: '70px'}}>
         <div className="hero-overlay"></div>
         <div className="container position-relative z-2 h-100 d-flex flex-column justify-content-center align-items-center">
           <h1 className="hero-title mb-3">
@@ -284,13 +313,22 @@ export default function Home() {
           </p>
           
           <div className="d-flex gap-3 justify-content-center flex-wrap">
-              <Link href="/about" className="btn btn-success btn-lg rounded-pill shadow-lg px-4">
+            {/* Button 1: Hover Lift Effect */}
+            <Link href="/about" className="btn btn-success btn-lg rounded-pill shadow-lg px-4 hover-lift">
              About Us
             </Link>
-            <Link href="/contact" className="btn btn-primary btn-lg rounded-pill shadow-lg px-4">
+            <Link 
+              href="/contact" 
+              className="btn btn-primary btn-lg rounded-pill shadow-lg px-4 hover-lift"
+            >
               Book Demo Class
             </Link>
-            <Link href="/materials" className="btn btn-warning btn-lg rounded-pill shadow-lg px-4 fw-bold text-dark d-flex align-items-center">
+
+            {/* Button 2: Hover Lift Effect */}
+            <Link 
+              href="/materials" 
+              className="btn btn-warning btn-lg rounded-pill shadow-lg px-4 fw-bold text-dark d-flex align-items-center hover-lift"
+            >
               <Download size={20} className="me-2" /> Easy Study Materials
             </Link>
           </div>
@@ -301,26 +339,26 @@ export default function Home() {
       <section className="py-5">
         <div className="container">
           <div className="row g-4">
-            <div className="col-md-3 col-sm-6">
-              <div className="stat-card text-center p-4">
+            <div className="col-md-3 col-sm-6 animate-fade-up delay-100">
+              <div className="stat-card text-center p-4 hover-lift">
                 <h3 className="text-primary mb-2">25+</h3>
                 <p className="text-muted">Years Experience</p>
               </div>
             </div>
-            <div className="col-md-3 col-sm-6">
-              <div className="stat-card text-center p-4">
+            <div className="col-md-3 col-sm-6 animate-fade-up delay-200">
+              <div className="stat-card text-center p-4 hover-lift">
                 <h3 className="text-primary mb-2">15000+</h3>
                 <p className="text-muted">Students Trained</p>
               </div>
             </div>
-            <div className="col-md-3 col-sm-6">
-              <div className="stat-card text-center p-4">
+            <div className="col-md-3 col-sm-6 animate-fade-up delay-300">
+              <div className="stat-card text-center p-4 hover-lift">
                 <h3 className="text-primary mb-2">100%</h3>
                 <p className="text-muted">Satisfaction Rate</p>
               </div>
             </div>
-            <div className="col-md-3 col-sm-6">
-              <div className="stat-card text-center p-4">
+            <div className="col-md-3 col-sm-6 animate-fade-up delay-100">
+              <div className="stat-card text-center p-4 hover-lift">
                 <h3 className="text-primary mb-2">50+</h3>
                 <p className="text-muted">Corporate Clients</p>
               </div>
@@ -329,23 +367,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* === 3. ABOUT US SECTION === */}
+      {/* === 3. ABOUT US SECTION (Photo Updated) === */}
       <section className="py-5 bg-light">
         <div className="container">
           <div className="row align-items-center g-5">
             <div className="col-lg-6">
-              <div className="position-relative rounded-4 overflow-hidden shadow-lg">
+              {/* Photo Background Removed (as much as possible in CSS) and Animation Added */}
+              <div className="position-relative hover-lift animate-fade-up">
+                {/* Removed 'rounded-4 overflow-hidden shadow-lg' to remove the white box look */}
                 <Image
-                  src="/about-home-image.jpg"
+                  src="/about-home-image_old.jpg"
                   alt="About IBC Spoken English"
                   width={350}
                   height={250}
                   className="img-fluid"
-                  style={{ objectFit: 'cover' }}
+                  /* Tip: 'mix-blend-mode: multiply' helps blend white bg images with light backgrounds, but PNG is best */
                 />
               </div>
             </div>
-            <div className="col-lg-6">
+            <div className="col-lg-6 animate-fade-up">
               <h6 className="text-primary fw-bold text-uppercase">About Us</h6>
               <h2 className="display-6 fw-bold mb-3">
                 Welcome to IBC Spoken English
@@ -369,7 +409,7 @@ export default function Home() {
               </div>
               <Link
                 href="/about"
-                className="btn btn-primary rounded-pill px-4"
+                className="btn btn-primary rounded-pill px-4 hover-lift"
               >
                 Learn More About Us
               </Link>
@@ -408,7 +448,7 @@ export default function Home() {
                 <div className="container">
                   <div className="row justify-content-center">
                     <div className="col-lg-8">
-                      <div className="testimonial-card text-center p-5 bg-white shadow-sm rounded-4">
+                      <div className="testimonial-card text-center p-5 bg-white shadow-sm rounded-4 hover-lift">
                         <div className="mb-3 text-warning">
                           {[...Array(review.rating)].map((_, i) => (
                             <Star key={i} size={20} fill="#ffc107" stroke="#ffc107" />
@@ -437,20 +477,21 @@ export default function Home() {
         )}
       </section>
 
-      {/* === 5. NEW RESOURCE BOOKS SECTION (Updated Design) === */}
+      {/* === 5. NEW RESOURCE BOOKS SECTION (Animated) === */}
       <section className="py-5 bg-white">
         <div className="container">
-          <div className="text-center mb-5">
+          <div className="text-center mb-5 animate-fade-up">
             <h6 className="text-primary fw-bold text-uppercase">Study Resources</h6>
             <h2 className="fw-bold">Our Premium Study Materials</h2>
             <p className="text-muted">Start your learning journey with our expert-curated books</p>
           </div>
 
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
-            {products.map((product) => (
-              <div key={product.id} className="col">
+            {products.map((product, index) => (
+              <div key={product.id} className={`col animate-fade-up delay-${(index % 3 + 1) * 100}`}>
                 <Link href="/materials" style={{textDecoration: 'none'}}>
-                    <div className="card h-100 border-0 shadow-sm hover-scale-effect position-relative overflow-hidden rounded-4" style={{ transition: 'all 0.3s ease' }}>
+                    {/* Added 'hover-lift' class here for mouse moving animation */}
+                    <div className="card h-100 border-0 shadow-sm hover-lift position-relative overflow-hidden rounded-4" style={{ transition: 'all 0.3s ease' }}>
                     
                     {product.isPopular && (
                         <div className="position-absolute top-0 end-0 z-3">
@@ -460,7 +501,6 @@ export default function Home() {
                         </div>
                     )}
                     
-                    {/* Poster Image Area - Cleaned up background, Increased Height to 340px */}
                     <div className="position-relative d-flex align-items-center justify-content-center pt-3" style={{ height: '340px', overflow: 'hidden' }}>
                         <div style={{ width: '85%', height: '100%', borderRadius: '4px', transform: 'perspective(1000px) rotateY(5deg)' }}>
                            {product.coverImage}
@@ -479,7 +519,7 @@ export default function Home() {
           </div>
           
           <div className="text-center mt-5">
-            <Link href="/materials" className="btn btn-primary btn-lg rounded-pill px-5 shadow">
+            <Link href="/materials" className="btn btn-primary btn-lg rounded-pill px-5 shadow hover-lift">
               Go to Materials Page <ArrowRight size={18} className="ms-2" />
             </Link>
           </div>
@@ -489,26 +529,26 @@ export default function Home() {
       {/* === 6. SERVICES SECTION === */}
       <section className="py-5 bg-light">
         <div className="container">
-          <div className="text-center mb-5">
+          <div className="text-center mb-5 animate-fade-up">
             <h2 className="section-heading">Our Services</h2>
           </div>
           <div className="row g-4">
-            <div className="col-lg-4 col-md-6">
-              <div className="service-card text-center p-4 bg-white rounded-4 shadow-sm h-100">
+            <div className="col-lg-4 col-md-6 animate-fade-up delay-100">
+              <div className="service-card text-center p-4 bg-white rounded-4 shadow-sm h-100 hover-lift">
                 <MessageSquare size={48} className="text-primary mb-3" />
                 <h5>Spoken English</h5>
                 <p className="text-muted">Master conversation at all levels</p>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6">
-              <div className="service-card text-center p-4 bg-white rounded-4 shadow-sm h-100">
+            <div className="col-lg-4 col-md-6 animate-fade-up delay-200">
+              <div className="service-card text-center p-4 bg-white rounded-4 shadow-sm h-100 hover-lift">
                 <Briefcase size={48} className="text-primary mb-3" />
                 <h5>Business Communication</h5>
                 <p className="text-muted">Professional communication excellence</p>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6">
-              <div className="service-card text-center p-4 bg-white rounded-4 shadow-sm h-100">
+            <div className="col-lg-4 col-md-6 animate-fade-up delay-300">
+              <div className="service-card text-center p-4 bg-white rounded-4 shadow-sm h-100 hover-lift">
                 <TrendingUp size={48} className="text-primary mb-3" />
                 <h5>Interview Preparation</h5>
                 <p className="text-muted">Land your dream job with confidence</p>
@@ -521,26 +561,26 @@ export default function Home() {
       {/* === 7. WHY CHOOSE US === */}
       <section className="py-5">
         <div className="container">
-          <div className="text-center mb-5">
+          <div className="text-center mb-5 animate-fade-up">
             <h2 className="section-heading">Why Choose Us?</h2>
           </div>
           <div className="row g-4">
-            <div className="col-md-4">
-              <div className="why-card text-center p-4">
+            <div className="col-md-4 animate-fade-up delay-100">
+              <div className="why-card text-center p-4 hover-lift">
                 <Award size={40} className="text-primary mb-3" />
                 <h5>Expert Instructor</h5>
                 <p className="text-muted">25+ years of teaching experience</p>
               </div>
             </div>
-            <div className="col-md-4">
-              <div className="why-card text-center p-4">
+            <div className="col-md-4 animate-fade-up delay-200">
+              <div className="why-card text-center p-4 hover-lift">
                 <Users size={40} className="text-primary mb-3" />
                 <h5>Personalized Approach</h5>
                 <p className="text-muted">Small batches for individual attention</p>
               </div>
             </div>
-            <div className="col-md-4">
-              <div className="why-card text-center p-4">
+            <div className="col-md-4 animate-fade-up delay-300">
+              <div className="why-card text-center p-4 hover-lift">
                 <CheckCircle size={40} className="text-primary mb-3" />
                 <h5>Guaranteed Results</h5>
                 <p className="text-muted">Proven track record of success</p>
@@ -551,7 +591,7 @@ export default function Home() {
       </section>
 
       {/* === 8. CTA SECTION === */}
-      <section className="py-5 cta-section bg-primary text-white">
+      <section className="py-5 cta-section bg-primary text-white animate-fade-up">
         <div className="container">
           <div className="row">
             <div className="col-lg-8 mx-auto text-center">
@@ -559,7 +599,7 @@ export default function Home() {
               <p className="lead mb-5">
                 Join thousands of successful learners. Book your free demo class today!
               </p>
-              <Link href="/contact" className="btn btn-light btn-lg rounded-pill shadow text-primary fw-bold">
+              <Link href="/contact" className="btn btn-light btn-lg rounded-pill shadow text-primary fw-bold hover-lift">
                 Schedule Your Demo Class
               </Link>
             </div>
@@ -571,3 +611,11 @@ export default function Home() {
     </>
   );
 }
+
+
+
+
+
+
+
+

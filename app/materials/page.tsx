@@ -7,7 +7,39 @@ import { useState } from 'react';
 import { Download, Check, Award } from 'lucide-react';
 import Swal from 'sweetalert2';
 
-// ========== PRODUCT DATA (UPDATED DESIGN) ==========
+// ========== CSS STYLES FOR ANIMATIONS ==========
+const animationStyles = `
+  /* Keyframes for Fade In Up */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Base Animation Class */
+  .animate-fade-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0; /* Start hidden */
+  }
+
+  /* Hover Lift Effect */
+  .hover-lift {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15) !important;
+    z-index: 10;
+  }
+`;
+
+// ========== PRODUCT DATA ==========
 const products = [
   // 1. 1000 Verbs
   {
@@ -96,7 +128,7 @@ const products = [
     colorClass: "btn-info text-white"
   },
 
-  // 4. Advanced Grammar (FIXED TEXT ALIGNMENT)
+  // 4. Advanced Grammar
   {
     id: 4,
     title: "Advanced Grammar in Use",
@@ -115,7 +147,6 @@ const products = [
         <rect width="300" height="340" fill="url(#gradAdv)" rx="8" />
         <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
         
-        {/* Fixed: Added textAnchor="middle" to center the text properly */}
         <text x="150" y="140" fill="white" textAnchor="middle" fontSize="38" fontWeight="900">English</text>
         <text x="150" y="180" fill="#1a2a6c" textAnchor="middle" fontSize="38" fontWeight="900">Grammar</text>
         <text x="150" y="220" fill="white" textAnchor="middle" fontSize="38" fontWeight="900">in Use</text>
@@ -256,36 +287,6 @@ const products = [
     isPopular: false,
     colorClass: "btn-warning text-dark"
   },
-
-  // // 10. TEST PRODUCT (₹1)
-  // {
-  //   id: 999, // Special ID
-  //   title: "Test Payment Check",
-  //   description: "This is for testing Razorpay & Admin Dashboard. Do not buy.",
-  //   price: "₹1",
-  //   rawPrice: 1, // కేవలం 1 రూపాయి
-  //   type: "TEST ITEM",
-  //   coverImage: (
-  //     <div style={{
-  //       width: '100%', 
-  //       height: '100%', 
-  //       background: '#e9ecef', 
-  //       display: 'flex', 
-  //       alignItems: 'center', 
-  //       justifyContent: 'center', 
-  //       borderRadius: '8px',
-  //       border: '2px dashed #333'
-  //     }}>
-  //       <div className="text-center">
-  //         <h3 className="fw-bold text-dark mb-0">TEST</h3>
-  //         <p className="small text-muted mb-0">₹1 Only</p>
-  //       </div>
-  //     </div>
-  //   ),
-  //   features: ["Test Database", "Test Dashboard", "No Refund"],
-  //   isPopular: false,
-  //   colorClass: "btn-secondary"
-  // }
 ];
 
 export default function MaterialsPage() {
@@ -383,9 +384,10 @@ export default function MaterialsPage() {
   return (
     <>
       <Script src="https://checkout.razorpay.com/v1/checkout.js" />
+      <style jsx global>{animationStyles}</style>
       <Navbar />
       
-      <section className="py-5 bg-light" style={{ marginTop: '70px' }}>
+      <section className="py-5 bg-light animate-fade-up" style={{ marginTop: '70px' }}>
         <div className="container text-center">
           <h1 className="fw-bold mb-3" style={{ fontSize: '2.5rem' }}>Premium Study Materials</h1>
           <p className="lead text-muted mx-auto" style={{ maxWidth: '700px' }}>
@@ -398,9 +400,13 @@ export default function MaterialsPage() {
       <section className="py-5">
         <div className="container">
           <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
-            {products.map((product) => (
-              <div key={product.id} className="col">
-                <div className="card h-100 border-0 shadow-sm hover-scale-effect position-relative overflow-hidden rounded-4" style={{ transition: 'all 0.3s ease' }}>
+            {products.map((product, index) => (
+              <div 
+                key={product.id} 
+                className="col animate-fade-up"
+                style={{ animationDelay: `${index * 0.1}s` }}
+              >
+                <div className="card h-100 border-0 shadow-sm hover-lift position-relative overflow-hidden rounded-4" style={{ transition: 'all 0.3s ease' }}>
                   
                   {product.isPopular && (
                     <div className="position-absolute top-0 end-0 z-3">
@@ -410,7 +416,6 @@ export default function MaterialsPage() {
                     </div>
                   )}
                   
-                  {/* UPDATE: Increased Height to 340px and removed background to make it clean */}
                   <div className="position-relative d-flex align-items-center justify-content-center pt-3" style={{ height: '340px', overflow: 'hidden' }}>
                     <div style={{ width: '85%', height: '100%', borderRadius: '4px', transform: 'perspective(1000px) rotateY(5deg)' }}>
                       {product.coverImage}
@@ -443,7 +448,7 @@ export default function MaterialsPage() {
                       <button 
                         onClick={() => handlePayment(product)}
                         disabled={loadingId === product.id}
-                        className={`btn w-100 py-2 rounded-pill fw-bold shadow-sm d-flex align-items-center justify-content-center ${product.colorClass}`}
+                        className={`btn w-100 py-2 rounded-pill fw-bold shadow-sm d-flex align-items-center justify-content-center ${product.colorClass} hover-lift`}
                       >
                         {loadingId === product.id ? 'Processing...' : (
                           <>

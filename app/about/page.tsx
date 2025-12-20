@@ -22,7 +22,7 @@ export default function AboutPage() {
             {/* ఇమేజ్ కాలమ్ */}
             <div className="col-lg-5 col-md-6">
               <Image
-                src="/about-home-image.jpg" // 'public' ఫోల్డర్‌లోని ఇమేజ్
+                src="/about-home-image_old.jpg" // 'public' ఫోల్డర్‌లోని ఇమేజ్
                 alt="Konakanchi SRTV Prasad, Tutor"
                 width={300}
                 height={400}
