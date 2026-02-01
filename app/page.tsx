@@ -13,7 +13,8 @@ import {
   Briefcase,
   Star,
   Download,
-  ArrowRight
+  ArrowRight,
+  Quote
 } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
@@ -34,11 +35,12 @@ const animationStyles = `
   /* Base Animation Class */
   .animate-fade-up {
     animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0; /* Start hidden */
   }
 
-  /* Hover Lift Effect (Mouse Moving) */
+  /* Hover Lift Effect */
   .hover-lift {
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth Bouncy Effect */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
   
   .hover-lift:hover {
@@ -47,15 +49,81 @@ const animationStyles = `
     z-index: 10;
   }
 
-  /* Delay for grid items */
-  .delay-100 { animation-delay: 0.1s; }
-  .delay-200 { animation-delay: 0.2s; }
-  .delay-300 { animation-delay: 0.3s; }
+  /* --- NEW: About Us Hover Reveal Animation --- */
+  .about-image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1rem;
+  }
+
+  .about-hover-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(37, 99, 235, 0.9), rgba(30, 64, 175, 0.8)); /* Primary color gradient */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 2rem;
+    opacity: 0;
+    transform: translateX(-100%); /* Start off-screen left */
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth sliding transition */
+  }
+
+  /* Trigger animation on hover of the container */
+  .about-image-container:hover .about-hover-content {
+    opacity: 1;
+    transform: translateX(0); /* Slide in to center */
+  }
+
+  .about-hover-content h4 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .about-hover-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-style: italic;
+  }
 `;
 
-// ========== PRODUCT DATA ==========
+// ========== PRODUCT DATA (SAME AS MATERIALS PAGE) ==========
 const products = [
-  // 1. 1000 Verbs
+  // 1. ALL ABOUT ENGLISH (NEW BOOK) - ₹299
+  {
+    id: 10,
+    title: "ALL ABOUT ENGLISH",
+    price: "₹299",
+    type: "PDF E-Book (Premium)",
+    coverImage: (
+      <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gradEng" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style={{ stopColor: '#0F2027', stopOpacity: 1 }} />
+            <stop offset="50%" style={{ stopColor: '#203A43', stopOpacity: 1 }} />
+            <stop offset="100%" style={{ stopColor: '#2C5364', stopOpacity: 1 }} />
+          </linearGradient>
+        </defs>
+        <rect width="300" height="340" fill="url(#gradEng)" rx="8" />
+        <rect x="15" y="15" width="270" height="310" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1" rx="4" />
+        <rect x="0" y="40" width="300" height="35" fill="#FFD700" />
+        <text x="150" y="62" fill="#000" textAnchor="middle" fontSize="14" fontWeight="bold" letterSpacing="1">THE ULTIMATE GUIDE</text>
+        <text x="150" y="140" fill="white" textAnchor="middle" fontSize="42" fontWeight="900" fontFamily="serif">ALL ABOUT</text>
+        <text x="150" y="190" fill="#FFD700" textAnchor="middle" fontSize="52" fontWeight="900" fontFamily="serif">ENGLISH</text>
+        <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">By K SRTV Prasad</text>
+      </svg>
+    ),
+    isPopular: true,
+    colorClass: "text-dark" // Kept dark text for contrast on home page card
+  },
+  // 2. 1000 Verbs
   {
     id: 1,
     title: "1000 Verb Forms",
@@ -80,7 +148,7 @@ const products = [
     isPopular: false,
     colorClass: "text-primary"
   },
-  // 2. Vocabulary
+  // 3. Vocabulary
   {
     id: 2,
     title: "Essential Vocabulary",
@@ -105,7 +173,7 @@ const products = [
     isPopular: false,
     colorClass: "text-warning"
   },
-  // 3. Intermediate Grammar
+  // 4. Intermediate Grammar
   {
     id: 3,
     title: "Intermediate Grammar",
@@ -129,7 +197,7 @@ const products = [
     isPopular: false,
     colorClass: "text-info"
   },
-  // 4. Advanced Grammar
+  // 5. Advanced Grammar
   {
     id: 4,
     title: "Advanced Grammar",
@@ -154,7 +222,7 @@ const products = [
     isPopular: false,
     colorClass: "text-success"
   },
-  // 5. IELTS Kit
+  // 6. IELTS Kit
   {
     id: 5,
     title: "IELTS Success Kit",
@@ -180,7 +248,7 @@ const products = [
     isPopular: true,
     colorClass: "text-danger"
   },
-  // 6. Tell Me About Yourself
+  // 7. Tell Me About Yourself
   {
     id: 6,
     title: "Tell Me About Yourself",
@@ -190,14 +258,17 @@ const products = [
       <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
         <rect width="300" height="340" fill="#636e72" rx="8" />
         <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
+        <path d="M100 100 L200 100 L150 180 Z" fill="#fab1a0" />
+        <text x="150" y="80" fill="white" textAnchor="middle" fontSize="20" fontWeight="bold">THE GUIDE TO</text>
         <text x="150" y="230" fill="white" textAnchor="middle" fontSize="28" fontWeight="bold">TELL ME</text>
+        <text x="150" y="265" fill="#fab1a0" textAnchor="middle" fontSize="24" fontWeight="bold">ABOUT YOURSELF</text>
         <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
     ),
     isPopular: false,
     colorClass: "text-secondary"
   },
-  // 7. 64 Tough Questions
+  // 8. 64 Tough Questions
   {
     id: 7,
     title: "64 Tough Interview Qs",
@@ -216,7 +287,7 @@ const products = [
     isPopular: true,
     colorClass: "text-info"
   },
-  // 8. Body Language
+  // 9. Body Language
   {
     id: 8,
     title: "Body Language",
@@ -239,7 +310,7 @@ const products = [
     isPopular: false,
     colorClass: "text-primary"
   },
-  // 9. Personality Development
+  // 10. Personality Development
   {
     id: 9,
     title: "Vyaktitva Vikasam (Personality Development)",
@@ -301,6 +372,7 @@ export default function Home() {
       <style jsx global>{animationStyles}</style>
       <Navbar />
 
+     
       {/* === 1. HERO SECTION (Buttons with Animation) === */}
       <section className="hero-section text-center text-white position-relative animate-fade-up" style={{marginTop: '70px'}}>
         <div className="hero-overlay"></div>
@@ -367,22 +439,34 @@ export default function Home() {
         </div>
       </section>
 
-      {/* === 3. ABOUT US SECTION (Photo Updated) === */}
+      {/* === 3. ABOUT US SECTION (UPDATED WITH HOVER REVEAL ANIMATION) === */}
       <section className="py-5 bg-light">
         <div className="container">
           <div className="row align-items-center g-5">
             <div className="col-lg-6">
-              {/* Photo Background Removed (as much as possible in CSS) and Animation Added */}
-              <div className="position-relative hover-lift animate-fade-up">
-                {/* Removed 'rounded-4 overflow-hidden shadow-lg' to remove the white box look */}
+              {/* Image Container with Hover Effect */}
+              <div className="about-image-container hover-lift animate-fade-up shadow-lg">
                 <Image
                   src="/about-home-image_old.jpg"
                   alt="About IBC Spoken English"
                   width={350}
                   height={250}
                   className="img-fluid"
-                  /* Tip: 'mix-blend-mode: multiply' helps blend white bg images with light backgrounds, but PNG is best */
+                  style={{ objectFit: 'contain', mixBlendMode: 'multiply' }} 
                 />
+                {/* Sliding Content on Hover */}
+                <div className="about-hover-content">
+                  <h4>
+                    <Quote size={24} className="me-2" />
+                    Words from the Master
+                  </h4>
+                  <p>
+                    "Language is not just about words; it's about confidence and connection. My mission is to help you break the barriers of hesitation and speak English fluently, opening doors to endless opportunities."
+                  </p>
+                  <p className="mt-3 mb-0 fw-bold">
+                    - K SRTV Prasad
+                  </p>
+                </div>
               </div>
             </div>
             <div className="col-lg-6 animate-fade-up">
@@ -490,7 +574,6 @@ export default function Home() {
             {products.map((product, index) => (
               <div key={product.id} className={`col animate-fade-up delay-${(index % 3 + 1) * 100}`}>
                 <Link href="/materials" style={{textDecoration: 'none'}}>
-                    {/* Added 'hover-lift' class here for mouse moving animation */}
                     <div className="card h-100 border-0 shadow-sm hover-lift position-relative overflow-hidden rounded-4" style={{ transition: 'all 0.3s ease' }}>
                     
                     {product.isPopular && (
@@ -611,11 +694,3 @@ export default function Home() {
     </>
   );
 }
-
-
-
-
-
-
-
-

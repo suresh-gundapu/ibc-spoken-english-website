@@ -14,7 +14,7 @@ const FILE_LINKS: Record<string, string> = {
   "7": "https://drive.google.com/file/d/1T9S28Wr6Dvl3Q4TDKdRZt2PLoYyBRVZ2/view?usp=drive_link", // 7. 64 Tough Questions
   "8": "https://drive.google.com/file/d/1QlZEh_aQAOV_XIZKxSVvjWHRKg7z-BXD/view?usp=drive_link", // 8. Body Language
   "9": "https://drive.google.com/file/d/1XY-jM8Kr53hWoztwS3dSRuCk7_D_ixgZ/view?usp=drive_link", // 9. Personality Development (Rs 49)
-  "999": "https://drive.google.com/file/d/1HYO0R4akM9GG-nvt3Fy_BvDHgE8uMtTI/view?usp=drive_link" // Test Item Link
+  "10": "https://drive.google.com/file/d/1a__a5DVJOPfD9VsAfnmGLFilmQXRBwz9/view?usp=drive_link" // 10. All About English book
 
 };
 // 2. PRICES MAP (ఇది యాడ్ చేశాను - పైసల్లో)
@@ -28,7 +28,7 @@ const PRODUCT_PRICES: Record<string, number> = {
   "7": 12900,  // ₹129
   "8": 8900,   // ₹89
   "9": 4900,   // ₹49
-  "999": 100   // ₹1 (TEST ITEM)
+  "10": 29900   //₹299 అంటే 29900 పైసలు
 };
 
 export async function POST(req: Request) {
