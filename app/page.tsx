@@ -314,6 +314,8 @@ const products = [
         </defs>
         <rect width="300" height="340" fill="url(#gradBody)" rx="8" />
         <text x="150" y="30" fill="white" textAnchor="middle" fontSize="12" fontWeight="bold" letterSpacing="1">IBC SPOKEN ENGLISH</text>
+        <circle cx="150" cy="110" r="40" fill="none" stroke="white" strokeWidth="4" />
+        <path d="M150 150 L150 220 M120 180 L180 180" stroke="white" strokeWidth="4" />
         <text x="150" y="260" fill="white" textAnchor="middle" fontSize="24" fontWeight="bold">BODY LANGUAGE</text>
         <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">K SRTV Prasad</text>
       </svg>
