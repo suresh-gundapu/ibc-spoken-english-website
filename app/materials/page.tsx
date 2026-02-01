@@ -45,38 +45,39 @@ const products = [
   // 1. ALL ABOUT ENGLISH (NEW BOOK) - ₹299
   {
     id: 10, // New ID
-    title: "ALL ABOUT ENGLISH",
+    title: "SPOKEN ENGLISH BOOK WITH VIDEOS",
     description: "A comprehensive guide covering grammar, vocabulary, communication, and advanced usage. The ultimate resource for mastering English.",
     price: "₹299",
     rawPrice: 299, // ₹299 in paise
     type: "PDF E-Book (Premium)",
     coverImage: (
       <svg width="100%" height="100%" viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="gradEng" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style={{ stopColor: '#0F2027', stopOpacity: 1 }} />
-            <stop offset="50%" style={{ stopColor: '#203A43', stopOpacity: 1 }} />
-            <stop offset="100%" style={{ stopColor: '#2C5364', stopOpacity: 1 }} />
-          </linearGradient>
-        </defs>
-        <rect width="300" height="340" fill="url(#gradEng)" rx="8" />
-        <rect x="15" y="15" width="270" height="310" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1" rx="4" />
-        
-        {/* Top Banner */}
-        <rect x="0" y="40" width="300" height="35" fill="#FFD700" />
-        <text x="150" y="62" fill="#000" textAnchor="middle" fontSize="14" fontWeight="bold" letterSpacing="1">THE ULTIMATE GUIDE</text>
-        
-        {/* Main Title */}
-        <text x="150" y="140" fill="white" textAnchor="middle" fontSize="42" fontWeight="900" fontFamily="serif">ALL ABOUT</text>
-        <text x="150" y="190" fill="#FFD700" textAnchor="middle" fontSize="52" fontWeight="900" fontFamily="serif">ENGLISH</text>
-        
-        {/* Subtitle/Features */}
-        <text x="150" y="230" fill="rgba(255,255,255,0.9)" textAnchor="middle" fontSize="14">Grammar • Vocabulary • Communication</text>
-        <line x1="100" y1="250" x2="200" y2="250" stroke="#FFD700" strokeWidth="2" />
-        
-        {/* Author Name */}
-        <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">By K SRTV Prasad</text>
-      </svg>
+  <defs>
+    <linearGradient id="gradEng" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style={{ stopColor: '#0F2027', stopOpacity: 1 }} />
+      <stop offset="50%" style={{ stopColor: '#203A43', stopOpacity: 1 }} />
+      <stop offset="100%" style={{ stopColor: '#2C5364', stopOpacity: 1 }} />
+    </linearGradient>
+  </defs>
+  <rect width="300" height="340" fill="url(#gradEng)" rx="8" />
+  <rect x="15" y="15" width="270" height="310" fill="none" stroke="rgba(255,255,255,0.2)" strokeWidth="1" rx="4" />
+  
+  {/* Top Banner */}
+  <rect x="0" y="40" width="300" height="35" fill="#FFD700" />
+  <text x="150" y="62" fill="#000" textAnchor="middle" fontSize="14" fontWeight="bold" letterSpacing="1">THE ULTIMATE GUIDE</text>
+  
+  {/* --- FIXED TITLE (Font Size Reduced to fit) --- */}
+  <text x="150" y="140" fill="white" textAnchor="middle" fontSize="28" fontWeight="900" fontFamily="serif">SPOKEN ENGLISH</text>
+  <text x="150" y="180" fill="#FFD700" textAnchor="middle" fontSize="22" fontWeight="bold" fontFamily="serif" letterSpacing="1">BOOK WITH VIDEOS</text>
+  {/* ---------------------------------------------- */}
+
+  {/* Subtitle/Features */}
+  <text x="150" y="230" fill="rgba(255,255,255,0.9)" textAnchor="middle" fontSize="14">Grammar • Vocabulary • Communication</text>
+  <line x1="100" y1="250" x2="200" y2="250" stroke="#FFD700" strokeWidth="2" />
+  
+  {/* Author Name */}
+  <text x="150" y="310" fill="white" textAnchor="middle" fontSize="14" fontWeight="bold">By K SRTV Prasad</text>
+</svg>
     ),
     features: ["Complete Grammar Rules", "Advanced Vocabulary", "Communication Strategies", "Practice Exercises"],
     isPopular: true,
